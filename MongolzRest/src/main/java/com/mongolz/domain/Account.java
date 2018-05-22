@@ -1,17 +1,17 @@
 package com.mongolz.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.*;
 
-
 @Entity
+@Table(name = "ACCOUNTS")
 public class Account implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "ACCOUNT_NO")
     private long id;
-
-    @Column(length = 20)
-    private String accountNo;
 
     @Column(length = 50)
     private String accountName;
@@ -24,13 +24,13 @@ public class Account implements Serializable {
     /**
      * No-arg constructor for JavaBean tools
      */
-    public Account() {}
+    public Account() {
+    }
 
     /**
      * Full constructor
      */
-    public Account(String accountNo, String accountName, double balance) {
-        this.accountNo = accountNo;
+    public Account(String accountName, double balance) {
         this.accountName = accountName;
         this.balance = balance;
     }
@@ -42,14 +42,6 @@ public class Account implements Serializable {
 
     public void setId(long id) {
         this.id = id;
-    }
-
-    public String getAccountNo() {
-        return accountNo;
-    }
-
-    public void setAccountNo(String accountId) {
-        this.accountNo = accountId;
     }
 
     public String getAccountName() {
@@ -68,13 +60,14 @@ public class Account implements Serializable {
         this.balance = balance;
     }
 
-//    public User getUser() {
-//        return user;
-//    }
-//
-//    public void setUser(User user) {
-//        this.user = user;
-//    }
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
 
     // ********************** Business Methods ********************** //
 }

@@ -18,8 +18,8 @@ public class Account implements Serializable {
 
     private double balance;
 
-    //@ManyToOne(fetch=FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    //private User  user;
+    @ManyToOne(fetch=FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    private User  user;
 
     /**
      * No-arg constructor for JavaBean tools

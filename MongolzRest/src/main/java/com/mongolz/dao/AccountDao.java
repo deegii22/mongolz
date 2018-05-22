@@ -12,6 +12,5 @@ public interface AccountDao extends GenericDao<Account>
 
     public List<Account> getAllAccounts();
 
-
 }
 

@@ -41,7 +41,7 @@ public class TransactionController {
             fromAccount.setBalance(fromAccount.getBalance() - itemToBeAdded.getAmount());
             itemToBeAdded.setFromAccount(fromAccount);
             itemToBeAdded.setToAccount(toAccount);
-            transactionService.save(itemToBeAdded);
+            transactionService.transaction(itemToBeAdded);
         } catch (Exception up) {
             System.out.println("Transaction Failed!!!");
 

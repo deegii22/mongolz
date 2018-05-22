@@ -1,30 +1,41 @@
 package com.mongolz.domain;
+
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
+import javax.persistence.*;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 public class Account implements Serializable {
-    private static final long serialVersionUID = 5784L;
-
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    private String accountId;
+    @Column(length = 20)
+    private String accountNo;
 
+    @Column(length = 50)
+    private String accountName;
+
+    private double balance;
+
+    //@ManyToOne(fetch=FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    //private User  user;
+
+    /**
+     * No-arg constructor for JavaBean tools
+     */
+    public Account() {}
+
+    /**
+     * Full constructor
+     */
+    public Account(String accountNo, String accountName, double balance) {
+        this.accountNo = accountNo;
+        this.accountName = accountName;
+        this.balance = balance;
+    }
+
+    // ********************** Accessor Methods ********************** //
     public long getId() {
         return id;
     }
@@ -33,11 +44,37 @@ public class Account implements Serializable {
         this.id = id;
     }
 
-    public String getAccountId() {
-        return accountId;
+    public String getAccountNo() {
+        return accountNo;
     }
 
-    public void setAccountId(String accountId) {
-        this.accountId = accountId;
+    public void setAccountNo(String accountId) {
+        this.accountNo = accountId;
     }
+
+    public String getAccountName() {
+        return accountName;
+    }
+
+    public void setAccountName(String accountName) {
+        this.accountName = accountName;
+    }
+
+    public double getBalance() {
+        return balance;
+    }
+
+    public void setBalance(double balance) {
+        this.balance = balance;
+    }
+
+//    public User getUser() {
+//        return user;
+//    }
+//
+//    public void setUser(User user) {
+//        this.user = user;
+//    }
+
+    // ********************** Business Methods ********************** //
 }

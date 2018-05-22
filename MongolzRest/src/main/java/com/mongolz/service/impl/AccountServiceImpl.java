@@ -17,7 +17,17 @@ public class AccountServiceImpl implements AccountService{
 	private AccountDao accountDao;
 
 	public List<Account> getAllAccounts() {
-		return accountDao.getAllAccounts();
+		return accountDao.findAll();
+	}
+	public List<Account> findByUser(Long userId){
+		return accountDao.findByUser(userId);
 	}
 
+	public void update(Account account){
+		accountDao.update(account);
+	}
+
+	public Account findOne(Long id){
+		return accountDao.findOne(id);
+	}
 }

@@ -1,17 +1,13 @@
 package com.mongolz.dao;
 
-
 import com.mongolz.domain.Account;
+import com.mongolz.domain.User;
 
 import java.util.List;
 
+public interface AccountDao extends GenericDao<Account> {
 
-public interface AccountDao extends GenericDao<Account>  
-{
-  Account getAccountByAccountId(String key);
-
-    public List<Account> getAllAccounts();
-
+    public List<Account> findByUser(Long userId);
 
 }
 

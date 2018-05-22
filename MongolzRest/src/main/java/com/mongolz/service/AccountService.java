@@ -6,5 +6,12 @@ import java.util.List;
 
 public interface AccountService {
 
-	List<Account> getAllAccounts();
+    public List<Account> getAllAccounts();
+
+    public List<Account> findByUser(Long userId);
+
+    public void update(Account account);
+
+    public Account findOne(Long id);
+
 }

@@ -19,7 +19,7 @@ public class UserDaoImpl extends GenericDaoImpl<User> implements UserDao {
 
 
     @Override
-    public User findUserByEmail(String email) {
+    public User findByEmail(String email) {
         Query query = entityManager.createQuery("select u from User u  where u.email =:email");
         return (User) query.setParameter("email", email).getSingleResult();
     }

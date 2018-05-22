@@ -25,6 +25,10 @@ public class Account implements Serializable {
 
     private String accountId;
 
+    public Account(String accountId) {
+        this.accountId = accountId;
+    }
+
     public long getId() {
         return id;
     }

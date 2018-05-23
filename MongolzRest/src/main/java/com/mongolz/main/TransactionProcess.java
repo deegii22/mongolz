@@ -1,3 +1,4 @@
+/*
 package com.mongolz.main;
 
 import com.mongolz.domain.Transaction;
@@ -28,3 +29,4 @@ public class TransactionProcess {
 		 
 	}
 }
+*/

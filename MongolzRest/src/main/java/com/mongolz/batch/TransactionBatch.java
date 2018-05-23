@@ -1,3 +1,4 @@
+/*
 package com.mongolz.batch;
 
 import com.mongolz.main.TransactionProcess;
@@ -54,3 +55,4 @@ public class TransactionBatch {
 	}
 	
 }
+*/

@@ -1,3 +1,4 @@
+/*
 package com.mongolz.batch;
 
 import com.mongolz.domain.Transaction;
@@ -6,9 +7,11 @@ import org.springframework.batch.item.ItemWriter;
 
 import java.util.List;
 
+*/
 /*
  * Declared in user-job.xml
- */
+ *//*
+
 public class TransactionItemWriter implements ItemWriter<Transaction>   {
 
  	private TransactionService transactionService;
@@ -27,3 +30,4 @@ public class TransactionItemWriter implements ItemWriter<Transaction>   {
 
 }
 
+*/

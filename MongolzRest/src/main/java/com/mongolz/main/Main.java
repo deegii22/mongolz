@@ -1,3 +1,4 @@
+/*
 package com.mongolz.main;
 
 
@@ -34,4 +35,4 @@ public class Main {
 		transactionBatch.startjob();
 	
   }
- }
+ }*/

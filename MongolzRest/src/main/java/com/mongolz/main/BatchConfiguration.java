@@ -1,3 +1,4 @@
+/*
 package com.mongolz.main;
 
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
@@ -9,3 +10,4 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @EnableScheduling
 public class BatchConfiguration {
 }
+*/

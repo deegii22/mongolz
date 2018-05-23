@@ -1,3 +1,4 @@
+/*
 package com.mongolz.batch;
 
 import org.springframework.batch.core.StepContribution;
@@ -27,3 +28,4 @@ public class Authenticate implements Tasklet{
 
   
 }
+*/

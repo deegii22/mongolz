@@ -1,3 +1,4 @@
+<!--
 <?xml version="1.0" encoding="UTF-8"?>
 <beans:beans
         xmlns="http://www.springframework.org/schema/batch"
@@ -10,15 +11,15 @@
             http://www.springframework.org/schema/batch http://www.springframework.org/schema/batch/spring-batch.xsd
             http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
- <!-- Read in the products -->
+ &lt;!&ndash; Read in the products &ndash;&gt;
     <beans:bean
             id="csvFileReader"
             class="org.springframework.batch.item.file.FlatFileItemReader"
             p:resource="classpath:data/transactions.csv">
         <beans:property name="lineMapper">      
-			  <!-- DefaultLineMapper - Two-phase LineMapper implementation consisting of 
+			  &lt;!&ndash; DefaultLineMapper - Two-phase LineMapper implementation consisting of
 			    1. Tokenization  - lineTokenizer[DelimitedLineTokenizer] of the line into FieldSet 
-			    2.  Mapping to item - fieldSetMapper[BeanWrapperFieldSetMapper] -->
+			    2.  Mapping to item - fieldSetMapper[BeanWrapperFieldSetMapper] &ndash;&gt;
 			            <beans:bean
 			                    class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
 			                <beans:property
@@ -68,3 +69,4 @@
 
 
 </beans:beans>
+-->

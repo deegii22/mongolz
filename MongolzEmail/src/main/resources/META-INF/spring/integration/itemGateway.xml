@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/integration"
+			 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+			 xmlns:beans="http://www.springframework.org/schema/beans"
+			 xmlns:amqp="http://www.springframework.org/schema/integration/amqp"
+			 xmlns:jms="http://www.springframework.org/schema/integration/jms"
+			 xsi:schemaLocation="http://www.springframework.org/schema/beans
+			http://www.springframework.org/schema/beans/spring-beans.xsd
+			http://www.springframework.org/schema/integration
+			http://www.springframework.org/schema/integration/spring-integration.xsd
+			http://www.springframework.org/schema/integration/jms
+			http://www.springframework.org/schema/integration/jms/spring-integration-jms.xsd
+			http://www.springframework.org/schema/integration/amqp
+ 			http://www.springframework.org/schema/integration/amqp/spring-integration-amqp.xsd">
+
+
+	<gateway id="item" service-interface="com.mongolz.integration.ItemGateway"
+			 default-request-channel="processItem"/>
+
+	<channel id="processItem" />
+
+	<!-- "ref" refers to custom Router:ordeRouter "method" is the message channel -->
+	<router input-channel="processItem" ref="itemRouter" method="processItem"/>
+
+
+	<channel id="highPrice"/>
+	<channel id="moderatePrice"/>
+
+	<jms:outbound-channel-adapter id="jmsoutHighPrice" channel="highPrice" destination="highPriceQueue" />
+	<jms:outbound-channel-adapter id="jmsoutModeratePrice" channel="moderatePrice" destination="moderatePriceQueue" />
+
+
+	<channel id="fromAmqpItem" />
+	<amqp:inbound-channel-adapter channel="fromAmqpItem"
+								  queue-names="itemQueue" connection-factory="amqpConnectionFactory" />
+	<bridge input-channel='fromAmqpItem' output-channel='transformItem' />
+
+	<transformer id="ItemtransformRoute" ref="itemTransformer"  input-channel="transformItem" output-channel="transformedItem" />
+	<beans:bean id="itemTransformer" class="com.mongolz.integration.ItemTransformerImpl" />
+
+
+
+	<!-- input order && transformedItem need to go to JMS -->
+	<bridge input-channel='transformedItem' output-channel='highPrice'/>
+	<bridge input-channel='transformedItem' output-channel='moderatePrice'/>
+
+
+</beans:beans>

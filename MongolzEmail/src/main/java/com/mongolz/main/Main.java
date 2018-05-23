@@ -16,31 +16,32 @@
 
 package com.mongolz.main;
 
-import java.util.Scanner;
-
+import com.mongolz.integration.ItemGateway;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Component;
 
- 
+import java.util.Scanner;
+
+
 @Component
 public class Main {
 
 	private final static String[] configFilesGatewayDemo = {
 		"/META-INF/spring/integration/common.xml",
-			"/META-INF/spring/integration/notificationGateway.xml",
-			"/META-INF/spring/integration/amqp-transaction-app-context.xml",
-			"/META-INF/spring/integration/jms-email-app-context.xml",
-			"/META-INF/spring/integration/jms-sms-app-context.xml"
+            "/META-INF/spring/integration/itemGateway.xml",
+			"/META-INF/spring/integration/amqp-item-app-context.xml",
+		"/META-INF/spring/integration/jms-highPrice-app-context.xml",
+		"/META-INF/spring/integration/jms-moderatePrice-app-context.xml"
 	};
 
-
+	ItemGateway itemGateway;
  
 	public static void main(String[] args) {
 
 		final Scanner scanner = new Scanner(System.in);
 
-//	    RouteOrderGateway orderGateway;
+//	    RouteOrderGateway itemGateway;
 
 
 		System.out.println("\n========================================================="
@@ -52,11 +53,14 @@ public class Main {
 				+ "\n                                                         "
 				+ "\n=========================================================" );
  
-  				System.out.println("    Loading Gateway Demo...");
+ 				System.out.println("    Loading Demo...");
 				ApplicationContext applicationContext = new ClassPathXmlApplicationContext(configFilesGatewayDemo, Main.class);
 
 			    applicationContext.getBean(Main.class).mainInternal(applicationContext);
 	  }
-	    private void mainInternal(ApplicationContext applicationContext) { }
+	
+	    private void mainInternal(ApplicationContext applicationContext) {
+
+	    }
 
 }

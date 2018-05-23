@@ -56,6 +56,8 @@ public class TransactionController {
             }
             toAccount.setBalance(toAccount.getBalance().add(itemToBeAdded.getAmount()));
             fromAccount.setBalance(fromAccount.getBalance().subtract(itemToBeAdded.getAmount()));
+            itemToBeAdded.setFromAccount(fromAccount);
+            itemToBeAdded.setToAccount(toAccount);
             accountService.update(toAccount);
             accountService.update(fromAccount);
             transactionService.doTransaction(itemToBeAdded);

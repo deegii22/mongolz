@@ -38,7 +38,7 @@ public class AmqpProducerMain {
         RabbitTemplate alertTemplate = context.getBean("alertTemplate", RabbitTemplate.class);
         AlertService alertService = new AlertServiceImpl();
         Transaction transaction = new Transaction();
-        transaction.setAmount(new BigDecimal(123000.0));
+        transaction.setAmount(new BigDecimal(123));
         Account account = new Account();
         User user = new User();
         user.setChannel("EMAIL");

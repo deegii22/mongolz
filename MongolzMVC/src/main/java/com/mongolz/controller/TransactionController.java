@@ -26,15 +26,16 @@ public class TransactionController {
     private AccountService accountService;
 
     @RequestMapping(value = "/add", method = RequestMethod.GET)
-    public String getAddNewUserForm(@ModelAttribute("newTransaction") Transaction newTransaction, Model model) {
+    public String getAddNewTranForm(@ModelAttribute("newTransaction") Transaction newTransaction, Model model) {
         model.addAttribute("accounts", accountService.findByUser(1L));
         return "transaction";
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public String processAddNewUserForm(@ModelAttribute("newTransaction") @Valid Transaction transactionToBeAdded, BindingResult result) {
+    public String processAddNewTranForm(Model model, @ModelAttribute("newTransaction") @Valid Transaction transactionToBeAdded, BindingResult result) {
 
         if(result.hasErrors()) {
+            model.addAttribute("accounts", accountService.findByUser(1L));
             return "transaction";
         }
 

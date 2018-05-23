@@ -1,10 +1,15 @@
 package com.mongolz.domain;
 
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Date;
 import javax.persistence.*;
+import javax.validation.Valid;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "TRANSACTION")
@@ -14,9 +19,12 @@ public class Transaction implements Serializable {
     @Column(name = "TRANSACTION_NO")
     private long id;
 
-    private double amount;
+    @NotNull
+    @Min(value = 1, message = "{Min.size}")
+    private BigDecimal amount;
 
     @Column(length = 50)
+    @NotEmpty(message = "{NotEmpty})")
     private String description;
 
     @Temporal(TemporalType.TIMESTAMP)
@@ -24,12 +32,14 @@ public class Transaction implements Serializable {
     @DateTimeFormat(pattern = "MM.dd.yyyy")
     private Date transactionDate = new Date();
 
-    @ManyToOne(fetch=FetchType.EAGER,  cascade = CascadeType.MERGE)
+    @ManyToOne(fetch=FetchType.EAGER,  cascade = CascadeType.ALL)
     @JoinColumn(name="fromAccount")
+    @Valid
     private Account  fromAccount;
 
-    @ManyToOne(fetch=FetchType.EAGER,  cascade = CascadeType.MERGE)
+    @ManyToOne(fetch=FetchType.EAGER,  cascade = CascadeType.ALL)
     @JoinColumn(name="toAccount")
+    @Valid
     private Account  toAccount;
 
     // ********************** Accessor Methods ********************** //
@@ -41,11 +51,11 @@ public class Transaction implements Serializable {
         this.id = id;
     }
 
-    public double getAmount() {
+    public BigDecimal getAmount() {
         return amount;
     }
 
-    public void setAmount(double amount) {
+    public void setAmount(BigDecimal amount) {
         this.amount = amount;
     }
 

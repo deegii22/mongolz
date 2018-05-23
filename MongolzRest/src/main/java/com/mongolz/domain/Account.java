@@ -2,12 +2,16 @@ package com.mongolz.domain;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 
 @Entity
 @Table(name = "ACCOUNT")
 public class Account implements Serializable {
     @Id
     @Column(name = "ACCOUNT_NO", length = 6)
+    @Min(value = 100000, message = "{Account.validation}")
+    @Max(value = 999999, message = "{Account.validation}")
     private long id;
 
     @Column(length = 50)

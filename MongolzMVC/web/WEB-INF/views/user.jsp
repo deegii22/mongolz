@@ -9,19 +9,14 @@
 <body>
 	<%@ include file="menu.jsp"%>
 	<section class="container">
+		<h3>User Details</h3>
 		<div class="row">
  				<div class="col-sm-6 col-md-3" style="padding-bottom: 15px">
-					<div class="thumbnail">
- 						<div class="caption">
-							<h3>First Name - ${user.firstName}</h3>
-							<h3>Last Name -  ${user.lastName}</h3>
-							<p>Alert Channel -         ${user.channel}</p>
-							<p>Email -       ${user.email} </p>
-
-						</div>
-					</div>
+					<p>First Name - ${user.firstName}</p>
+					<p>Last Name -  ${user.lastName}</p>
+					<p>Alert Channel -         ${user.channel}</p>
+					<p>Email -       ${user.email} </p>
 				</div>
- 
 		</div>
 	</section>
 </body>

@@ -11,7 +11,7 @@ public interface UserRestService {
 
     public List<User> findAll();
 
-    public User findById(Long index);
+    public User findByUsername(String username);
 
     public User save(User user);
 

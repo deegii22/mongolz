@@ -40,8 +40,8 @@ public class UserServiceImpl implements com.mongolz.service.UserService {
     }
 
     @Override
-    public User findById(Long id) {
-        return userRestService.findById(id);
+    public User findByUsername(String username) {
+        return userRestService.findByUsername(username);
     }
 
     public User update(User user) {

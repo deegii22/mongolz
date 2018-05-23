@@ -20,7 +20,19 @@
     <div role="navigation">
         <div class="main-menu hidden-xs">
             <div class="wlcm-cont">
-                Welcome  ${user} !
+                Welcome  ${user} <!doctype html>
+                <html lang="en">
+                <head>
+                    <meta charset="UTF-8">
+                    <meta name="viewport"
+                          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+                    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+                    <title>Document</title>
+                </head>
+                <body>
+                
+                </body>
+                </html>
             </div>
             <ul class="menu" id="topbar">
                 <c:choose>

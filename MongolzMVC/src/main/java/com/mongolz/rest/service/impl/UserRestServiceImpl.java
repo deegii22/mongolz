@@ -27,9 +27,9 @@ public class UserRestServiceImpl implements UserRestService {
     }
 
     @Override
-    public User findById(Long id) {
+    public User findByUsername(String username) {
         RestTemplate restTemplate = restHttpHeader.getRestTemplate();
-        return (restTemplate.exchange("http://localhost:8080/users" + id, HttpMethod.GET, restHttpHeader.getHttpEntity(), User.class).getBody());
+        return (restTemplate.exchange("http://localhost:8080/users/" + username, HttpMethod.GET, restHttpHeader.getHttpEntity(), User.class).getBody());
     }
 
     @Override

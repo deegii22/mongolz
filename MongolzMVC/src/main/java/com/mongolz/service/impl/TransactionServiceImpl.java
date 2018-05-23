@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -19,7 +19,7 @@ public class TransactionServiceImpl implements TransactionService {
     public void doTransaction(Transaction transaction){
         transactionRestService.doTransaction(transaction);
     }
-    public List<Transaction> findByAccountAndDate(Long accountNo, Date startTxnDate, Date endTxnDate){
+    public List<Transaction> findByAccountAndDate(Long accountNo, LocalDate startTxnDate, LocalDate endTxnDate){
         return transactionRestService.findByAccountAndDate(accountNo, startTxnDate, endTxnDate);
     }
 }

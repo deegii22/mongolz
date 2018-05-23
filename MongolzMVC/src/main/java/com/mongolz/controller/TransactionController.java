@@ -13,9 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.validation.Valid;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
+import java.time.LocalDate;
 
 @Controller
 @RequestMapping("/transactions")
@@ -49,12 +47,9 @@ public class TransactionController {
 
     @RequestMapping({"/{accountId}"})
     public String list(@PathVariable("accountId") Long accountId, Model model) {
-        Date toDate = new Date();
-        Calendar cal = new GregorianCalendar();
-        cal.setTime(toDate);
-        cal.add(Calendar.DAY_OF_MONTH, -30);
-        Date fromDate = cal.getTime();
-        model.addAttribute("transactions", transactionService.findByAccountAndDate(accountId, fromDate, toDate));
+        LocalDate toDate = LocalDate.now();
+        LocalDate fromDate = toDate.plusMonths(-1);
+        model.addAttribute("transactions", transactionService.findByAccountAndDate(accountId, fromDate, toDate.plusDays(1)));
         return "transactionList";
     }
 }

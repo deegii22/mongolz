@@ -10,10 +10,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.List;
 
 @Component
@@ -32,12 +31,12 @@ public class TransactionRestServiceImpl implements TransactionRestService {
 
     }
 
-    public List<Transaction> findByAccountAndDate(Long accountNo, Date startTxnDate, Date endTxnDate) {
-        DateFormat df = new SimpleDateFormat("MMddyyyy");
+    public List<Transaction> findByAccountAndDate(Long accountNo, LocalDate startTxnDate, LocalDate endTxnDate) {
+        DateTimeFormatter  df = DateTimeFormatter.ofPattern("MMddyyyy");
         RestTemplate restTemplate = restHelper.getRestTemplate();
         HttpEntity httpEntity = new HttpEntity(restHelper.getHttpHeaders());
         ResponseEntity<Transaction[]> responseEntity = restTemplate.exchange(baseUrlExtended + accountNo
-                + "/startDate/" + df.format(startTxnDate) + "/endDate/" + df.format(endTxnDate), HttpMethod.GET, httpEntity, Transaction[].class);
+                + "/startDate/" + startTxnDate.format(df) + "/endDate/" + endTxnDate.format(df), HttpMethod.GET, httpEntity, Transaction[].class);
         List<Transaction> transactionList = Arrays.asList(responseEntity.getBody());
         return transactionList;
     }

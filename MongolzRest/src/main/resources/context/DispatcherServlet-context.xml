@@ -8,17 +8,28 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
 		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
-    <mvc:annotation-driven>
- 	 	<mvc:message-converters>
-		    <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
-		        <property name="objectMapper">
-		            <bean class="com.mongolz.rest.HibernateAwareObjectMapper" />
-		        </property>
-		    </bean>
-		</mvc:message-converters>
- 	</mvc:annotation-driven> 
- 
+	<context:component-scan base-package="com.mongolz.controller" />
+	<mvc:annotation-driven />
 
- 	<context:component-scan base-package="com.mongolz" />
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/views/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+
+
+	<mvc:resources  location="/resources/"  mapping="/resource/**"/>
+
+    <!--<mvc:annotation-driven>-->
+ 	 	<!--<mvc:message-converters>-->
+		    <!--<bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">-->
+		        <!--<property name="objectMapper">-->
+		            <!--<bean class="com.mongolz.rest.HibernateAwareObjectMapper" />-->
+		        <!--</property>-->
+		    <!--</bean>-->
+		<!--</mvc:message-converters>-->
+ 	<!--</mvc:annotation-driven> -->
+ <!---->
+
+ 	<!--<context:component-scan base-package="com.mongolz" />-->
  	
   </beans>

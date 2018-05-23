@@ -17,7 +17,7 @@
 <section>
     <div class="jumbotron">
         <div class="container">
-            <div class="logo"></div>
+            <div class="logo"><img src="<spring:url value="/resource/images/logo-mongolz1.png"  htmlEscape="true" />" style="height: 60px;"></div>
         </div>
     </div>
 </section>

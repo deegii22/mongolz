@@ -15,5 +15,14 @@
 </head>
 <body>
     <%@ include file="menu.jsp"%>
+    <section class="container">
+        <h3>Welcome to Internet Bank</h3>
+        <ul>
+            <li>View Account balance</li>
+            <li>View Transaction List</li>
+            <li>Transfer Money</li>
+            <li>Get Transaction Alert</li>
+        </ul>
+    </section>
 </body>
 </html>

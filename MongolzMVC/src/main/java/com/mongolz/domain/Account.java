@@ -1,6 +1,7 @@
 package com.mongolz.domain;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import javax.persistence.*;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
@@ -17,7 +18,7 @@ public class Account implements Serializable {
     @Column(length = 50)
     private String accountName;
 
-    private double balance;
+    private BigDecimal balance;
 
     @ManyToOne(fetch=FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private User  user;
@@ -39,11 +40,11 @@ public class Account implements Serializable {
         this.accountName = accountName;
     }
 
-    public double getBalance() {
+    public BigDecimal getBalance() {
         return balance;
     }
 
-    public void setBalance(double balance) {
+    public void setBalance(BigDecimal balance) {
         this.balance = balance;
     }
 

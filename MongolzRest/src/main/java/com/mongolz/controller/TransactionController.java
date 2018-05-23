@@ -8,6 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -22,9 +25,14 @@ public class TransactionController {
     private AccountService accountService;
 
     @RequestMapping("/{accountNo}/startDate/{startDate}/endDate/{endDate}")
-    public List<Transaction> findByAccountAndDate(@PathVariable("accountNo") Long accountNo, @PathVariable("startDate") Date startDate, @PathVariable("endDate") Date endDate) {
-
-        return transactionService.findByAccountAndDate(accountNo, startDate, endDate);
+    public List<Transaction> findByAccountAndDate(@PathVariable("accountNo") Long accountNo, @PathVariable("startDate") String startDate, @PathVariable("endDate") String endDate) {
+        DateFormat df = new SimpleDateFormat("MMddyyyy");
+        try {
+            return transactionService.findByAccountAndDate(accountNo, df.parse(startDate), df.parse(endDate));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     @RequestMapping(value = "/txn", method = RequestMethod.POST)

@@ -1,6 +1,7 @@
 package com.mongolz.controller;
 
 import com.mongolz.domain.Transaction;
+import com.mongolz.service.AccountService;
 import  com.mongolz.service.TransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,8 +20,12 @@ public class TransactionController {
     @Autowired
     private TransactionService transactionService;
 
+    @Autowired
+    private AccountService accountService;
+
     @RequestMapping(value = "/tran", method = RequestMethod.GET)
-    public String getAddNewUserForm(@ModelAttribute("newTransaction") Transaction newTransaction) {
+    public String getAddNewUserForm(@ModelAttribute("newTransaction") Transaction newTransaction, Model model) {
+        model.addAttribute("accounts", accountService.findByUser(1L));
         return "transaction";
     }
 

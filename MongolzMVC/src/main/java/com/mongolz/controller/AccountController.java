@@ -15,7 +15,7 @@ public class AccountController {
 
  	@RequestMapping({"","/all"})
 	public String list(Model model) {
-		model.addAttribute("accounts", accountService.findAll());
+		model.addAttribute("accounts", accountService.findByUser(1L));
 		return "accounts";
 	}
 	

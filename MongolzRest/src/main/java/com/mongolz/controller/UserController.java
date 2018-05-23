@@ -19,13 +19,16 @@ public class UserController {
         return userService.findAll();
     }
 
-    @RequestMapping("/{id}")
-    public User getByUserId(@PathVariable("id") Long id) {
-        return userService.findOne(id);
+    @RequestMapping("/{username}")
+    public User getByEmail(@PathVariable("username") String username) {
+
+        System.out.println("Orj irsen email:"+username);
+        return userService.findByUsername(username);
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public User addNewUserForm(@RequestBody User userToBeAdded) {
+        System.out.println(userToBeAdded.toString());
         userService.saveFull(userToBeAdded);
         return null;
     }

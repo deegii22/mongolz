@@ -19,6 +19,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Version;
+import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
@@ -26,6 +27,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name = "USERS")
@@ -36,12 +39,18 @@ public class User implements Serializable {
     @Column(name = "ID")
     private Long id = null;
 
+    @Size(min = 4, max = 19, message = "{Size.name}")
+    @NotEmpty
     @Column(name = "FIRSTNAME", nullable = false)
     private String firstName;
 
+    @Size(min = 4, max = 19, message = "{Size.name}")
+    @NotEmpty
     @Column(name = "LASTNAME", nullable = false)
     private String lastName;
 
+    @Email(message = "{email}")
+    @NotEmpty
     @Column(name = "EMAIL", nullable = false)
     private String email;
 
@@ -124,5 +133,17 @@ public class User implements Serializable {
         return this.channel;
     }
 
-
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", admin=" + admin +
+                ", userCredentials=" + userCredentials +
+                ", channel='" + channel + '\'' +
+                ", accounts=" + accounts +
+                '}';
+    }
 }

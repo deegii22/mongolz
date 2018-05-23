@@ -1,3 +1,8 @@
+@font-face { font-family: "AGAvantGarde Mon"; src: url('font/AGAvantGardeMon.ttf'); }
+@font-face { font-family: "MAK Freeset"; src: url('font/MAK Freeset_0.ttf'); }
+@font-face { font-family: "MAK MagistralNormal"; src: url('font/MAK Magistral Italic.ttf'); }
+@font-face { font-family: "MAK Magistral"; src: url('font/MAK Magistral Bold Italic.ttf'); }
+
 .jumbotron {
     background: url("../images/header_bg.png") 0 0 no-repeat;
     height: 88px;
@@ -15,14 +20,14 @@
     background: #313131 url("../images/bg.jpg") 0 0 no-repeat /*center bottom fixed*/;
     min-height: 480px;
 }
-/*.login-form {
+.login-form {
     margin-top: 70px;
     padding: 20px 35px !important;
     font-family: "MAK Freeset", Arial, sans-serif;
-    background: #D9DADD;
+    /*background: #D9DADD;*/
     height: 280px;
     border-radius: 10px;
-}*/
+}
 .footer {
     padding: 10px;
 }

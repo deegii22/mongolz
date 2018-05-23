@@ -36,8 +36,8 @@ public class UserServiceImpl implements com.mongolz.service.UserService {
         return (List<User>)userDao.findAll();
     }
 
-    public User findByEmail(String email) {
-        return userDao.findByEmail(email);
+    public User findByUsername(String username) {
+        return userDao.findByUsername(username);
     }
 
     public User update(User user) {

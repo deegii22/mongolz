@@ -15,7 +15,7 @@ import java.util.List;
 public class UserCredentials {
 
     @Id
-    @Column( nullable = false, unique = true, length = 127)
+    @Column(nullable = false, unique = true, length = 127)
     @NotEmpty
     String username;
 
@@ -29,6 +29,11 @@ public class UserCredentials {
 
     @OneToOne(mappedBy = "userCredentials", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private User user;
+
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(name = "CREDENTIAL_ROLE", joinColumns = {@JoinColumn(name = "credential_id")},
+            inverseJoinColumns = {@JoinColumn(name = "role_id", unique = true)})
+    List<Role> roles = new ArrayList<Role>();
 
     public String getUsername() {
         return username;
@@ -70,5 +75,23 @@ public class UserCredentials {
         this.user = user;
     }
 
+    public List<Role> getAuthority() {
+        return roles;
+    }
 
+    public void setAuthority(List<Role> roles) {
+        this.roles = roles;
+    }
+
+    @Override
+    public String toString() {
+        return "UserCredentials{" +
+                "username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", verifyPassword='" + verifyPassword + '\'' +
+                ", enabled=" + enabled +
+                ", user=" + user +
+                ", roles=" + roles +
+                '}';
+    }
 }

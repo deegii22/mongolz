@@ -1,16 +1,13 @@
 package com.mongolz.domain;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "ACCOUNTS")
+@Table(name = "ACCOUNT")
 public class Account implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "ACCOUNT_NO")
+    @Column(name = "ACCOUNT_NO", length = 6)
     private long id;
 
     @Column(length = 50)

@@ -78,5 +78,13 @@ public class Transaction implements Serializable {
         return transactionDate;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     // ********************** Business Methods ********************** //
 }

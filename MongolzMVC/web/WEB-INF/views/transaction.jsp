@@ -25,9 +25,9 @@
 			<form:errors path="*" cssClass="alert alert-danger" element="div"/>
 
 			<div class="form-group">
-				<label class="control-label col-lg-2" for="fromAccount">
+				<label class="control-label col-lg-2" for="fromAccount"></label>
 				<div class="col-lg-10">
-					<form:select path="fromAccount" cssClass="">
+					<form:select path="fromAccount.id" cssClass="" id="fromAccount">
 						<c:forEach items="${accounts}" var="account">
 							<form:option value="${account.id}" label="${acccount.id + '-' + account.accountName}"/>
 						</c:forEach>
@@ -39,8 +39,8 @@
 				<label class="control-label col-lg-2" for="toAccount"><spring:message code="transaction.form.toAccount.label"/></label>
 				<div class="col-lg-10">
 					<div class="form:input-prepend">
-						<form:input id="toAccount" path="toAccount" type="text" class="form:input-large"/>
-						<form:errors path="toAccount" cssClass="text-danger"/>
+						<form:input id="toAccount" path="toAccount.id" type="text" class="form:input-large"/>
+						<form:errors path="toAccount.id" cssClass="text-danger"/>
 					</div>
 				</div>
 			</div>

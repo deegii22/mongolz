@@ -23,13 +23,13 @@ public class TransactionController {
     @Autowired
     private AccountService accountService;
 
-    @RequestMapping(value = "/tran", method = RequestMethod.GET)
+    @RequestMapping(value = "/add", method = RequestMethod.GET)
     public String getAddNewUserForm(@ModelAttribute("newTransaction") Transaction newTransaction, Model model) {
         model.addAttribute("accounts", accountService.findByUser(1L));
         return "transaction";
     }
 
-    @RequestMapping(value = "/tran", method = RequestMethod.POST)
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
     public String processAddNewUserForm(@ModelAttribute("newTransaction") @Valid Transaction transactionToBeAdded, BindingResult result) {
 
         if(result.hasErrors()) {

@@ -31,7 +31,7 @@
                 </c:when>
                 <c:otherwise>
                     <a href="<spring:url value="/accounts" />" class="btn btn-default pull-right">Accounts</a>
-                    <a href="<spring:url value="/transaction/add" />" class="btn btn-default pull-right">Transaction</a>
+                    <a href="<spring:url value="/transactions/add" />" class="btn btn-default pull-right">Transaction</a>
                     <a href="<spring:url value='/logout' />" class="btn btn-default pull-right"> Logout</a>
                 </c:otherwise>
             </c:choose>

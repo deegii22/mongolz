@@ -13,7 +13,6 @@ import java.util.List;
 public class AccountServiceImpl implements AccountService {
 
     @Autowired
-    @Qualifier("MVC")
     private AccountRestService accountRestService;
 
     public List<Account> findAll() {

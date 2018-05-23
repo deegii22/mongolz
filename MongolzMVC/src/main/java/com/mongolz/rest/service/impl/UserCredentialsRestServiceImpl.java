@@ -43,7 +43,12 @@ public class UserCredentialsRestServiceImpl implements UserCredentialsRestServic
         RestTemplate restTemplate = restHttpHeader.getRestTemplate();
         UserCredentials userCredentials = null;
         try {
+            System.out.println("Rest ruu orj irsen!");
             userCredentials = (restTemplate.exchange("http://localhost:8080/userCredentials/" + userName, HttpMethod.GET, restHttpHeader.getHttpEntity(), UserCredentials.class).getBody());
+            if (userCredentials == null) {
+                System.out.println("userCredentials null bn");
+            }
+            System.out.println("Rest ner:"+userCredentials.getUsername());
         } catch (Exception e) {
             System.out.println(e.getMessage());
 

@@ -14,7 +14,6 @@ import java.util.List;
 public class TransactionServiceImpl implements TransactionService {
 
     @Autowired
-    @Qualifier("MVC")
     private TransactionRestService transactionRestService;
 
     public void doTransaction(Transaction transaction){

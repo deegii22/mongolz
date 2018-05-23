@@ -30,18 +30,25 @@ public class LoginController {
     @RequestMapping(value = "/postLogin", method = RequestMethod.POST)
     public String PostLogin(UserCredentials credentials, Model model) {
 
+        System.out.println("Orj irsen");
         System.out.println("Orj irsen username:"+credentials.getUsername());
+//        if(credentials == null){
+//            System.out.println("Orj irsen");
+//            credentials = new UserCredentials();
+//            credentials.setPassword("eta");
+//            credentials.setUsername("eta");
+//        }
+//        credentials = new UserCredentials();
+//        credentials.setPassword("eta");
+//        credentials.setUsername("eta");
         UserCredentials validCredentials = credentialsService.findByUserName(credentials.getUsername());
-
-
-        System.out.println("Login:"+validCredentials.toString());
 
         if (validCredentials == null)
             return "login";
 
+        //System.out.println(validCredentials.getUsername());
 
-
-        model.addAttribute("user", validCredentials.getUser());
-        return "redirect:/accounts";
+        model.addAttribute("user", validCredentials.getUsername());
+        return "redirect:/welcome";
     }
 }

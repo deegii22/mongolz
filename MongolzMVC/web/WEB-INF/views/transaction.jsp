@@ -4,32 +4,23 @@
 
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-	<link rel="stylesheet"	href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+	<%@ include file="header.jsp"%>
 	<title>Transaction</title>
 </head>
 <body>
-<section>
-	<div class="jumbotron">
-		<div class="container">
-			<h1>Transaction</h1>
-			<p>Do transaction</p>
-		</div>
-	</div>
-</section>
+<%@ include file="menu.jsp"%>
 <section class="container">
+	<h3>Transfer money</h3>
 	<form:form  modelAttribute="newTransaction" class="form-horizontal" >
-		<fieldset>
-			<legend>Do tran</legend>
 
 			<form:errors path="*" cssClass="alert alert-danger" element="div"/>
 
 			<div class="form-group">
-				<label class="control-label col-lg-2" for="fromAccount"></label>
-				<div class="col-lg-10">
-					<form:select path="fromAccount.id" cssClass="" id="fromAccount">
+				<label class="control-label col-lg-2" for="fromAccount"><spring:message code="transaction.form.fromAccount.label"/></label>
+				<div class="col-lg-4">
+					<form:select path="fromAccount.id" cssClass="form-control" id="fromAccount">
 						<c:forEach items="${accounts}" var="account">
-							<form:option value="${account.id}" label="${acccount.id + '-' + account.accountName}"/>
+							<form:option value="${account.id}"/>
 						</c:forEach>
 					</form:select>
 				</div>
@@ -37,9 +28,9 @@
 
 			<div class="form-group">
 				<label class="control-label col-lg-2" for="toAccount"><spring:message code="transaction.form.toAccount.label"/></label>
-				<div class="col-lg-10">
+				<div class="col-lg-4">
 					<div class="form:input-prepend">
-						<form:input id="toAccount" path="toAccount.id" type="text" class="form:input-large"/>
+						<form:input id="toAccount" path="toAccount.id" type="text" class="form-control"/>
 						<form:errors path="toAccount.id" cssClass="text-danger"/>
 					</div>
 				</div>
@@ -47,9 +38,9 @@
 
 			<div class="form-group">
 				<label class="control-label col-lg-2" for="amount"><spring:message code="transaction.form.amount.label"/></label>
-				<div class="col-lg-10">
+				<div class="col-lg-4">
 					<div class="form:input-prepend">
-						<form:input id="amount" path="amount" type="text" class="form:input-large"/>
+						<form:input id="amount" path="amount" type="text" class="form-control"/>
 						<form:errors path="amount" cssClass="text-danger"/>
 					</div>
 				</div>
@@ -57,20 +48,18 @@
 
 			<div class="form-group">
 				<label class="control-label col-lg-2" for="description"><spring:message code="transaction.form.description.label"/></label>
-				<div class="col-lg-10">
-					<form:input id="description" path="description" type="text" class="form:input-large"/>
+				<div class="col-lg-4">
+					<form:input id="description" path="description" type="text" class="form-control"/>
 					<form:errors path="description" cssClass="text-danger"/>
 				</div>
 			</div>
 
 
 			<div class="form-group">
-				<div class="col-lg-offset-2 col-lg-10">
+				<div class="col-lg-offset-2 col-lg-4">
 					<input type="submit" id="btnAdd" class="btn btn-primary" value ="Submit"/>
 				</div>
 			</div>
-
-		</fieldset>
 	</form:form>
 </section>
 </body>

@@ -1,0 +1,81 @@
+.jumbotron {
+    background: url("../images/header_bg.png") 0 0 no-repeat;
+    height: 88px;
+    padding: 0 !important;
+    margin-bottom: 0 !important;
+}
+.logo {
+    margin: 20px 0;
+    width: 261px;
+    float: left;
+    height: 47px;
+    background: url("../images/logo.png") 0 0 no-repeat;
+}
+.bg {
+    background: #313131 url("../images/bg.jpg") 0 0 no-repeat /*center bottom fixed*/;
+    min-height: 480px;
+}
+/*.login-form {
+    margin-top: 70px;
+    padding: 20px 35px !important;
+    font-family: "MAK Freeset", Arial, sans-serif;
+    background: #D9DADD;
+    height: 280px;
+    border-radius: 10px;
+}*/
+.footer {
+    padding: 10px;
+}
+.header-main {
+    background: #005bab;
+}
+.wlcm-cont {
+    float: left;
+    width: 280px;
+    color: #fff;
+    padding: 15px 15px 0;
+    font-size: 11px;
+    height: 95px;
+    overflow: hidden;
+}
+.main-menu ul {
+    padding: 0px;
+    margin: 0px;
+    overflow: hidden;
+}
+.main-menu ul li {
+    float: left;
+    border-left: 1px solid #2e77b7;
+    max-width: 127px;
+    list-style: none;
+}
+.main-menu ul li a {
+    text-align: center;
+    padding: 19px 25px 24px 25px;
+    display: block;
+    border-top: 5px solid transparent;
+    color: #fff;
+    max-width: 127px;
+    height: 98px;
+    line-height: 14px;
+    font-size: 12px;
+    font-family: "AGAvantGarde Mon", Arial, sans-serif;
+}
+.main-menu ul li a svg {
+    width: 30px;
+    height: 30px;
+    fill: #FFF;
+}
+.navbar {
+    margin-bottom: 0px !important;
+}
+.logo1 {
+    background: url(../images/logo-DarkBg.png) no-repeat scroll left 0 transparent;
+    float: left;
+    height: 35px;
+    margin: 8px 20px;
+    width: 189px;
+}
+.table, form {
+    margin-top: 20px;
+}

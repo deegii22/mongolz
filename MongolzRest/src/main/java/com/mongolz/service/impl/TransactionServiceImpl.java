@@ -17,7 +17,7 @@ public class TransactionServiceImpl implements TransactionService {
     @Autowired
     private TransactionDao transactionDao;
 
-    public void transaction(Transaction transaction) {
+    public void doTransaction(Transaction transaction) {
         transactionDao.save(transaction);
     }
 

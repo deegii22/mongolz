@@ -12,7 +12,7 @@ import java.util.Date;
 import java.util.List;
 
 @RestController
-@RequestMapping("/Transactions")
+@RequestMapping("/transactions")
 public class TransactionController {
 
     @Autowired
@@ -41,7 +41,7 @@ public class TransactionController {
             fromAccount.setBalance(fromAccount.getBalance() - itemToBeAdded.getAmount());
             itemToBeAdded.setFromAccount(fromAccount);
             itemToBeAdded.setToAccount(toAccount);
-            transactionService.transaction(itemToBeAdded);
+            transactionService.doTransaction(itemToBeAdded);
         } catch (Exception up) {
             System.out.println("Transaction Failed!!!");
 

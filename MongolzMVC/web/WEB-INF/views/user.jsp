@@ -10,14 +10,30 @@
 	<%@ include file="menu.jsp"%>
 	<section class="container">
 		<h3>User Details</h3>
-		<div class="row">
- 				<div class="col-sm-6 col-md-3" style="padding-bottom: 15px">
-					<p>First Name - ${user.firstName}</p>
-					<p>Last Name -  ${user.lastName}</p>
-					<p>Alert Channel -         ${user.channel}</p>
-					<p>Email -       ${user.email} </p>
+			<div class="row">
+				<label class="control-label col-lg-2">First Name:</label>
+				<div class="col-lg-10">
+					${userDetail.firstName}
 				</div>
-		</div>
+			</div>
+			<div class="row">
+				<label class="control-label col-lg-2">Last Name:</label>
+				<div class="col-lg-10">
+					${userDetail.lastName}
+				</div>
+			</div>
+			<div class="row">
+				<label class="control-label col-lg-2">Alert Channel:</label>
+				<div class="col-lg-10">
+					${userDetail.channel}
+				</div>
+			</div>
+			<div class="row">
+				<label class="control-label col-lg-2">Email:</label>
+				<div class="col-lg-10">
+					${userDetail.email}
+				</div>
+			</div>
 	</section>
 </body>
 </html>

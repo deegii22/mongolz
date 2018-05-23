@@ -29,17 +29,10 @@ public class Main {
 
 	private final static String[] configFilesGatewayDemo = {
 		"/META-INF/spring/integration/common.xml",
-<<<<<<< HEAD
             "/META-INF/spring/integration/itemGateway.xml",
 			"/META-INF/spring/integration/amqp-item-app-context.xml",
 		"/META-INF/spring/integration/jms-highPrice-app-context.xml",
 		"/META-INF/spring/integration/jms-moderatePrice-app-context.xml"
-=======
-			"/META-INF/spring/integration/alertGateway.xml",
-			"/META-INF/spring/integration/amqp-alert-app-context.xml",
-			"/META-INF/spring/integration/jms-email-app-context.xml",
-			"/META-INF/spring/integration/jms-sms-app-context.xml"
->>>>>>> 632e23014270302cb7a6999905d571872393af8a
 	};
 
 	ItemGateway itemGateway;

@@ -2,6 +2,7 @@ package com.mongolz.main;
 
 import com.mongolz.amqp.AlertService;
 import com.mongolz.amqp.AlertServiceImpl;
+import com.mongolz.domain.Transaction;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.GenericXmlApplicationContext;
@@ -29,7 +30,8 @@ public class AmqpProducerMain {
 
         RabbitTemplate transactionTemplate = context.getBean("transactionTemplate", RabbitTemplate.class);
         AlertService accountService = new AlertServiceImpl();
-        accountService.publish(transactionTemplate);
+        Transaction transaction = new Transaction();
+        accountService.publish(transactionTemplate, transaction);
 
         System.out.println("Done ...");
  

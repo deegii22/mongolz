@@ -45,10 +45,10 @@ public class TransactionController {
             Account fromAccount = accountService.findOne(itemToBeAdded.getFromAccount().getId());
 //            if(fromAccount.getBalance() < itemToBeAdded.getAmount())
 //                return "balance";
-            //toAccount.setBalance(toAccount.getBalance() + itemToBeAdded.getAmount());
-            //fromAccount.setBalance(fromAccount.getBalance() - itemToBeAdded.getAmount());
-            itemToBeAdded.setFromAccount(fromAccount);
-            itemToBeAdded.setToAccount(toAccount);
+            toAccount.setBalance(toAccount.getBalance().add(itemToBeAdded.getAmount()));
+            fromAccount.setBalance(fromAccount.getBalance().subtract(itemToBeAdded.getAmount()));
+            accountService.update(toAccount);
+            accountService.update(fromAccount);
             transactionService.doTransaction(itemToBeAdded);
         } catch (Exception up) {
             System.out.println(up.toString());

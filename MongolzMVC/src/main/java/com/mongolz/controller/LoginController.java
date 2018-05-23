@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.mongolz.service.UserCredentialsService;
 import com.mongolz.domain.UserCredentials;
+import org.springframework.web.bind.support.SessionStatus;
 
 @Controller
 @SessionAttributes("user")
@@ -22,7 +23,7 @@ public class LoginController {
     @Autowired
     UserService userService;
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @RequestMapping(value = {"/","login"}, method = RequestMethod.GET)
     public String login() {
         return "login";
     }
@@ -36,6 +37,13 @@ public class LoginController {
             return "login";
 
         model.addAttribute("user", validCredentials.getUsername());
+        return "redirect:/welcome";
+    }
+
+    @RequestMapping(value="/logout", method = RequestMethod.GET)
+    public String logout(Model model, SessionStatus status) {
+        System.out.println(status.toString());
+        status.setComplete();
         return "redirect:/welcome";
     }
 }

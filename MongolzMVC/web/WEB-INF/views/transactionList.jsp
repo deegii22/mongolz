@@ -19,6 +19,7 @@
 						<th>From Account</th>
 						<th>To Account</th>
 						<th>Transaction Amount</th>
+						<th>Transaction Desc</th>
 					</tr>
 				</thead>
 				<c:forEach items="${transactions}" var="transaction">
@@ -28,6 +29,7 @@
 						<td>${transaction.fromAccount.id}</td>
 						<td>${transaction.toAccount.id}</td>
 						<td align="right">${transaction.amount}</td>
+						<td>${transaction.description}</td>
 					</tr>
 				</c:forEach>
 			</table>

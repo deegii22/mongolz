@@ -31,9 +31,9 @@ public class UserCredentials {
     private User user;
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinTable(name = "CREDENTIAL_ROLE", joinColumns = {@JoinColumn(name = "credential_id")},
-            inverseJoinColumns = {@JoinColumn(name = "role_id", unique = true)})
-    List<Role> roles = new ArrayList<Role>();
+    @JoinTable(name = "credential_authority", joinColumns = {@JoinColumn(name = "credential_id")},
+            inverseJoinColumns = {@JoinColumn(name = "authority_id", unique = true)})
+    List<Authority> authority = new ArrayList<Authority>();
 
     public String getUsername() {
         return username;
@@ -75,12 +75,12 @@ public class UserCredentials {
         this.user = user;
     }
 
-    public List<Role> getAuthority() {
-        return roles;
+    public List<Authority> getAuthority() {
+        return authority;
     }
 
-    public void setAuthority(List<Role> roles) {
-        this.roles = roles;
+    public void setAuthority(List<Authority> authority) {
+        this.authority = authority;
     }
 
     @Override
@@ -91,7 +91,9 @@ public class UserCredentials {
                 ", verifyPassword='" + verifyPassword + '\'' +
                 ", enabled=" + enabled +
                 ", user=" + user +
-                ", roles=" + roles +
+                ", roles=" + authority +
                 '}';
     }
+
 }
+

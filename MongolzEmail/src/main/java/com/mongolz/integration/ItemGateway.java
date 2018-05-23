@@ -2,7 +2,7 @@
   
 package com.mongolz.integration;
 
-import com.mongolz.domain.RouteItem;
+import com.mongolz.domain.Transaction;
 import org.springframework.integration.annotation.Gateway;
 
 /**
@@ -15,6 +15,6 @@ public interface ItemGateway {
      * Process a book order.
      */
 	@Gateway(requestChannel="processItem")
-	public void process(RouteItem item);
+	public void process(Transaction transaction);
 
 }

@@ -1,8 +1,8 @@
  
 package com.mongolz.integration;
 
-import com.mongolz.domain.Item;
-import com.mongolz.domain.RouteItem;
+import com.mongolz.domain.RouteTransaction;
+import com.mongolz.domain.Transaction;
 
 /**
  * Routes order based on order type.
@@ -11,6 +11,6 @@ import com.mongolz.domain.RouteItem;
 
 public interface ItemTransformer {
 
-	public RouteItem transformItem(Item item);
+	public RouteTransaction transformItem(Transaction transaction);
 
 }

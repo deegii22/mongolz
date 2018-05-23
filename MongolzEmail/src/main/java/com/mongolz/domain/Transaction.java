@@ -1,5 +1,7 @@
 package com.mongolz.domain;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -8,23 +10,14 @@ public class Transaction implements Serializable {
 
     private double amount;
 
-    private Date txnDate = new Date();
+    private String description;
 
-    private Account fromAccount;
+    @DateTimeFormat(pattern = "MM.dd.yyyy")
+    private Date transactionDate = new Date();
 
-    private Account toAccount;
+    private Account  fromAccount;
 
-    /**
-     * No-arg constructor for JavaBean tools
-     */
-    public Transaction() {}
-
-    /**
-     * Full constructor
-     */
-    public Transaction(double amount) {
-        this.amount = amount;
-    }
+    private Account  toAccount;
 
     // ********************** Accessor Methods ********************** //
     public long getId() {
@@ -59,8 +52,20 @@ public class Transaction implements Serializable {
         this.toAccount = toAccount;
     }
 
-    public Date getTxnDate() {
-        return txnDate;
+    public Date getTransactionDate() {
+        return transactionDate;
+    }
+
+    public void setTransactionDate(Date transactionDate) {
+        this.transactionDate = transactionDate;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     // ********************** Business Methods ********************** //

@@ -1,8 +1,13 @@
 package com.mongolz.main;
 
-import com.mongolz.amqp.ItemService;
-import com.mongolz.amqp.ItemServiceImpl;
+import com.mongolz.amqp.AlertService;
+import com.mongolz.amqp.AlertServiceImpl;
+import com.mongolz.domain.Account;
+import com.mongolz.domain.Transaction;
+import com.mongolz.domain.User;
+import com.mongolz.service.TransactionService;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.GenericXmlApplicationContext;
 
@@ -14,7 +19,9 @@ public class AmqpProducerMain {
 	
     public static void main(String[] args) {
 
-        ApplicationContext context = new GenericXmlApplicationContext("classpath:spring/item-app-context.xml");
+
+
+        ApplicationContext context = new GenericXmlApplicationContext("classpath:spring/alert-app-context.xml");
 
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
         System.out.println();
@@ -27,9 +34,18 @@ public class AmqpProducerMain {
             e1.printStackTrace();
         }
 
-        RabbitTemplate itemTemplate = context.getBean("itemTemplate", RabbitTemplate.class);
-        ItemService itemService = new ItemServiceImpl();
-        itemService.publish(itemTemplate);
+        RabbitTemplate alertTemplate = context.getBean("alertTemplate", RabbitTemplate.class);
+        AlertService alertService = new AlertServiceImpl();
+        Transaction transaction = new Transaction();
+        transaction.setAmount(123.00);
+        Account account = new Account();
+        User user = new User();
+        user.setChannel("EMAIL");
+        user.setEmail("deegii212@gmail.com");
+        user.setFirstName("Deegii");
+        account.setUser(user);
+        transaction.setFromAccount(account);
+        alertService.publish(alertTemplate, transaction);
 
         System.out.println("Done ...");
  

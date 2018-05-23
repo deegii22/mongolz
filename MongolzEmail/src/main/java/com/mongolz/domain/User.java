@@ -1,9 +1,15 @@
 package com.mongolz.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class User implements Serializable {
     private Long id = null;
 
@@ -19,6 +25,7 @@ public class User implements Serializable {
 
     private String channel;
 
+    @JsonIgnore
     private List<Account> accounts = new ArrayList<Account>();
 
     public Long getId() {
@@ -81,8 +88,13 @@ public class User implements Serializable {
         this.channel = channel;
     }
 
-    public String getChannel(){
+    public String getChannel() {
         return this.channel;
+    }
+
+    public String toString() {
+        return " firstname:" + firstName + " lastName:" + lastName + " email:" +
+                email + " admin:" + admin + " channel:" + channel + "username:"+userCredentials.getUsername() + "password:"+userCredentials.getPassword();
     }
 
 

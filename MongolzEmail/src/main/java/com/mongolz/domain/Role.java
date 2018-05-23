@@ -1,5 +1,6 @@
 package com.mongolz.domain;
 
+
 public class Role {
 
     private long id;

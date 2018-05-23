@@ -28,7 +28,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
-@Table(name = "USER")
+@Table(name = "USERS")
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class User implements Serializable {
     @Id
@@ -48,9 +48,9 @@ public class User implements Serializable {
     @Column(name = "IS_ADMIN", nullable = true)
     private boolean admin = false;
 
-    @OneToOne(fetch = FetchType.EAGER)
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "userCredId")
-//	@JsonBackReference
+	@JsonBackReference
     private UserCredentials userCredentials;
 
     @Column(name = "CHANNEL", nullable = false)
@@ -120,8 +120,13 @@ public class User implements Serializable {
         this.channel = channel;
     }
 
-    public String getChannel(){
+    public String getChannel() {
         return this.channel;
+    }
+
+    public String toString() {
+        return " firstname:" + firstName + " lastName:" + lastName + " email:" +
+                email + " admin:" + admin + " channel:" + channel + "username:"+userCredentials.getUsername() + "password:"+userCredentials.getPassword();
     }
 
 

@@ -17,11 +17,19 @@ public class TransactionServiceImpl implements TransactionService {
     @Autowired
     private TransactionDao transactionDao;
 
-    public void transaction(Transaction transaction) {
+    public void doTransaction(Transaction transaction) {
+        transactionDao.save(transaction);
+    }
+
+    public void save( Transaction transaction) {
         transactionDao.save(transaction);
     }
 
     public List<Transaction> findByAccountAndDate(Long accountNo, Date startTxnDate, Date endTxnDate) {
         return transactionDao.findByAccountAndDate(accountNo, startTxnDate, endTxnDate);
+    }
+
+    public List<Transaction> findAll() {
+        return (List<Transaction>)transactionDao.findAll();
     }
 }

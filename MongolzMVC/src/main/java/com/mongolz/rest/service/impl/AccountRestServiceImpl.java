@@ -13,7 +13,7 @@ import org.springframework.web.client.RestTemplate;
 import java.util.Arrays;
 import java.util.List;
 
-@Component("MVC")
+@Component
 public class AccountRestServiceImpl implements AccountRestService {
 
 	@Autowired
@@ -28,6 +28,15 @@ public class AccountRestServiceImpl implements AccountRestService {
 		HttpEntity httpEntity = new HttpEntity(restHelper.getHttpHeaders());
 		ResponseEntity<Account[]> responseEntity = restTemplate.exchange(baseUrl, HttpMethod.GET, httpEntity, Account[].class);	
  		List<Account> accountList = Arrays.asList(responseEntity.getBody());
+		return accountList;
+	}
+
+	public List<Account> findByUser(Long userId) {
+
+		RestTemplate restTemplate = restHelper.getRestTemplate();
+		HttpEntity httpEntity = new HttpEntity(restHelper.getHttpHeaders());
+		ResponseEntity<Account[]> responseEntity = restTemplate.exchange(baseUrlExtended + userId, HttpMethod.GET, httpEntity, Account[].class);
+		List<Account> accountList = Arrays.asList(responseEntity.getBody());
 		return accountList;
 	}
 }

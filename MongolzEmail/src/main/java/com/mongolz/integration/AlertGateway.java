@@ -2,19 +2,19 @@
   
 package com.mongolz.integration;
 
-import com.mongolz.domain.Account;
+import com.mongolz.domain.Transaction;
 import org.springframework.integration.annotation.Gateway;
 
 /**
  * An entry point for the Bus Flow for local input.
  * 
  */
-public interface NotificationGateway {
+public interface AlertGateway {
 
     /**
      * Process a book order.
      */
-	@Gateway(requestChannel="processTransaction")
-	public void process(Account account);
+	@Gateway(requestChannel="processAlert")
+	public void process(Transaction transaction);
 
 }

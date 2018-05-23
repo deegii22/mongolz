@@ -10,4 +10,6 @@ public interface AccountRestService {
 
  	public List<Account> findAll();
 
+	public List<Account> findByUser(Long userId);
+
 }

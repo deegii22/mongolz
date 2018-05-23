@@ -20,7 +20,7 @@ public class SmsListener implements MessageListener {
 			e.printStackTrace();
 		}
         System.out.println("Sms transaction - Message received: " );
-        System.out.println("         Item Name: "  + account.getAccountId());
+        System.out.println("         Item Name: "  + account.getId());
 
     }
 }

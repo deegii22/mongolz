@@ -1,16 +1,13 @@
 package com.mongolz.domain;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "ACCOUNTS")
+@Table(name = "ACCOUNT")
 public class Account implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "ACCOUNT_NO")
+    @Column(name = "ACCOUNT_NO", length = 6)
     private long id;
 
     @Column(length = 50)
@@ -20,20 +17,6 @@ public class Account implements Serializable {
 
     @ManyToOne(fetch=FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private User  user;
-
-    /**
-     * No-arg constructor for JavaBean tools
-     */
-    public Account() {
-    }
-
-    /**
-     * Full constructor
-     */
-    public Account(String accountName, double balance) {
-        this.accountName = accountName;
-        this.balance = balance;
-    }
 
     // ********************** Accessor Methods ********************** //
     public long getId() {

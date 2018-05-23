@@ -14,17 +14,17 @@
  
 <!-- *********** DIRECT EXCHANGE ***************** -->
 
-    <rabbit:queue name="transactionQueue" durable="true"/>
+    <rabbit:queue name="alertQueue" durable="true"/>
 
     <rabbit:direct-exchange name="direct" durable="true">
         <rabbit:bindings>
-            <rabbit:binding queue="transactionQueue" key="purchases.key"></rabbit:binding>
+            <rabbit:binding queue="alertQueue" key="purchases.key"></rabbit:binding>
         </rabbit:bindings>
     </rabbit:direct-exchange>
 
 <!-- **************** DIRECT PRODUCER  -->
 
-    <rabbit:template id="transactionTemplate" connection-factory="connectionFactory"
-                     reply-timeout="2000" routing-key="purchases.transaction" exchange="direct" />
+    <rabbit:template id="alertTemplate" connection-factory="connectionFactory"
+                     reply-timeout="2000" routing-key="purchases.alert" exchange="direct" />
  
 </beans>

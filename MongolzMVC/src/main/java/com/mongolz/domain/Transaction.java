@@ -1,11 +1,13 @@
 package com.mongolz.domain;
 
-import javax.persistence.*;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.*;
 
 @Entity
-@Table(name = "TRANSACTIONS")
+@Table(name = "TRANSACTION")
 public class Transaction implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -14,29 +16,21 @@ public class Transaction implements Serializable {
 
     private double amount;
 
+    @Column(length = 50)
+    private String description;
+
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name="CREATED", nullable = false, updatable = false)
-    private Date txnDate = new Date();
+    @DateTimeFormat(pattern = "MM.dd.yyyy")
+    private Date transactionDate = new Date();
 
-    @ManyToOne(fetch=FetchType.EAGER,  cascade = CascadeType.MERGE)
+    @ManyToOne(fetch=FetchType.EAGER,  cascade = CascadeType.ALL)
     @JoinColumn(name="fromAccount")
     private Account  fromAccount;
 
-    @ManyToOne(fetch=FetchType.EAGER,  cascade = CascadeType.MERGE)
+    @ManyToOne(fetch=FetchType.EAGER,  cascade = CascadeType.ALL)
     @JoinColumn(name="toAccount")
     private Account  toAccount;
-
-    /**
-     * No-arg constructor for JavaBean tools
-     */
-    public Transaction() {}
-
-    /**
-     * Full constructor
-     */
-    public Transaction(double amount) {
-        this.amount = amount;
-    }
 
     // ********************** Accessor Methods ********************** //
     public long getId() {
@@ -71,8 +65,20 @@ public class Transaction implements Serializable {
         this.toAccount = toAccount;
     }
 
-    public Date getTxnDate() {
-        return txnDate;
+    public Date getTransactionDate() {
+        return transactionDate;
+    }
+
+    public void setTransactionDate(Date transactionDate) {
+        this.transactionDate = transactionDate;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     // ********************** Business Methods ********************** //

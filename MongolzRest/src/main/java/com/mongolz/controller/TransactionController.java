@@ -28,7 +28,7 @@ public class TransactionController {
     }
 
     @RequestMapping(value = "/txn", method = RequestMethod.POST)
-    public Transaction processAddNewItemForm(@Valid @RequestBody Transaction itemToBeAdded) {
+    public Transaction processAddNewItemForm(@RequestBody Transaction itemToBeAdded) {
 
         try {
             Account toAccount = accountService.findOne(itemToBeAdded.getToAccount().getId());
@@ -37,12 +37,13 @@ public class TransactionController {
             Account fromAccount = accountService.findOne(itemToBeAdded.getFromAccount().getId());
 //            if(fromAccount.getBalance() < itemToBeAdded.getAmount())
 //                return "balance";
-            toAccount.setBalance(toAccount.getBalance() + itemToBeAdded.getAmount());
-            fromAccount.setBalance(fromAccount.getBalance() - itemToBeAdded.getAmount());
+            //toAccount.setBalance(toAccount.getBalance() + itemToBeAdded.getAmount());
+            //fromAccount.setBalance(fromAccount.getBalance() - itemToBeAdded.getAmount());
             itemToBeAdded.setFromAccount(fromAccount);
             itemToBeAdded.setToAccount(toAccount);
             transactionService.doTransaction(itemToBeAdded);
         } catch (Exception up) {
+            System.out.println(up.toString());
             System.out.println("Transaction Failed!!!");
 
         }

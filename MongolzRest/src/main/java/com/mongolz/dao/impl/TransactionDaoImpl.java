@@ -9,6 +9,7 @@ import javax.persistence.Query;
 import java.util.Date;
 import java.util.List;
 
+@SuppressWarnings("unchecked")
 @Repository
 public class TransactionDaoImpl extends GenericDaoImpl<Transaction> implements TransactionDao {
 

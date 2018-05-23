@@ -13,7 +13,7 @@
 	<div class="jumbotron">
 		<div class="container">
 			<h1>Transaction</h1>
-			<p>Do tran</p>
+			<p>Do transaction</p>
 		</div>
 	</div>
 </section>
@@ -25,34 +25,48 @@
 			<form:errors path="*" cssClass="alert alert-danger" element="div"/>
 
 			<div class="form-group">
-				<label class="control-label col-lg-2" for="name"><spring:message code="transaction.form.name.label"/></label>
+				<label class="control-label col-lg-2" for="fromAccount">
 				<div class="col-lg-10">
-					<form:input id="name" path="name" type="text" class="form:input-large"/>
-					<form:errors path="name" cssClass="text-danger"/>
+					<form:select path="fromAccount" cssClass="">
+						<c:forEach items="${accounts}" var="account">
+							<form:option value="${account.id}" label="${acccount.id + '-' + account.accountName}"/>
+						</c:forEach>
+					</form:select>
 				</div>
 			</div>
 
 			<div class="form-group">
-				<label class="control-label col-lg-2" for="price"><spring:message code="addItem.form.price.label"/></label>
+				<label class="control-label col-lg-2" for="toAccount"><spring:message code="transaction.form.toAccount.label"/></label>
 				<div class="col-lg-10">
 					<div class="form:input-prepend">
-						<form:input id="initialPrice" path="initialPrice" type="text" class="form:input-large"/>
-						<form:errors path="initialPrice" cssClass="text-danger"/>
+						<form:input id="toAccount" path="toAccount" type="text" class="form:input-large"/>
+						<form:errors path="toAccount" cssClass="text-danger"/>
 					</div>
 				</div>
 			</div>
 
 			<div class="form-group">
-				<label class="control-label col-lg-2" for="description"><spring:message code="addItem.form.description.label"/></label>
+				<label class="control-label col-lg-2" for="amount"><spring:message code="transaction.form.amount.label"/></label>
 				<div class="col-lg-10">
-					<form:textarea id="description" path="description" rows = "2"/>
+					<div class="form:input-prepend">
+						<form:input id="amount" path="amount" type="text" class="form:input-large"/>
+						<form:errors path="amount" cssClass="text-danger"/>
+					</div>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="control-label col-lg-2" for="description"><spring:message code="transaction.form.description.label"/></label>
+				<div class="col-lg-10">
+					<form:input id="description" path="description" type="text" class="form:input-large"/>
+					<form:errors path="description" cssClass="text-danger"/>
 				</div>
 			</div>
 
 
 			<div class="form-group">
 				<div class="col-lg-offset-2 col-lg-10">
-					<input type="submit" id="btnAdd" class="btn btn-primary" value ="Add"/>
+					<input type="submit" id="btnAdd" class="btn btn-primary" value ="Submit"/>
 				</div>
 			</div>
 

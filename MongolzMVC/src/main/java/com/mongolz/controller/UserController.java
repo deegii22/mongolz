@@ -46,6 +46,8 @@ public class UserController {
         if(result.hasErrors()) {
             return "addUser";
         }
+
+        System.out.println("Add post orj irsen");
         //  Error caught by ControllerAdvice IF no authorization...
         userService.saveFull(userToBeAdded);
 

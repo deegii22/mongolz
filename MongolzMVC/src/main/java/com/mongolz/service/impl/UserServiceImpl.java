@@ -18,8 +18,8 @@ public class UserServiceImpl implements com.mongolz.service.UserService {
     @Autowired
     private UserRestService userRestService;
 
-//    @Autowired
-//    private UserCredentialsService credentialsService;
+    @Autowired
+    private UserCredentialsService credentialsService;
 
 
     public void save( User user) {
@@ -28,7 +28,9 @@ public class UserServiceImpl implements com.mongolz.service.UserService {
 
     @Override
     public void saveFull( User user) {
-        //credentialsService.save(user.getUserCredentials());
+        System.out.println(user.toString());
+        System.out.println(user.getUserCredentials().toString());
+        credentialsService.save(user.getUserCredentials());
         userRestService.save(user);
     }
 

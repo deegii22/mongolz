@@ -27,6 +27,7 @@ public class UserCredentialsController {
     public void addOne(@RequestBody UserCredentials userCredentials) {
 
         //encryption will be here
+        System.out.println(userCredentials.toString());
         credentialsService.save(userCredentials);
         return;
     }

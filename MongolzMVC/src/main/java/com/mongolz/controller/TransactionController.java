@@ -8,10 +8,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.validation.Valid;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 
 @Controller
 @RequestMapping("/transactions")
@@ -41,5 +45,16 @@ public class TransactionController {
 
         return "redirect:/accounts";
 
+    }
+
+    @RequestMapping({"/{accountId}"})
+    public String list(@PathVariable("accountId") Long accountId, Model model) {
+        Date fromDate = new Date();
+        Calendar cal = new GregorianCalendar();
+        cal.setTime(fromDate);
+        cal.add(Calendar.DAY_OF_MONTH, -30);
+        Date toDate = cal.getTime();
+        model.addAttribute("transactions", transactionService.findByAccountAndDate(accountId, fromDate, toDate));
+        return "transactionList";
     }
 }

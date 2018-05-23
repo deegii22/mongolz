@@ -18,20 +18,6 @@ public class Account implements Serializable {
     @ManyToOne(fetch=FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private User  user;
 
-    /**
-     * No-arg constructor for JavaBean tools
-     */
-    public Account() {
-    }
-
-    /**
-     * Full constructor
-     */
-    public Account(String accountName, double balance) {
-        this.accountName = accountName;
-        this.balance = balance;
-    }
-
     // ********************** Accessor Methods ********************** //
     public long getId() {
         return id;

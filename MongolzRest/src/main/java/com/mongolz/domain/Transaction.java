@@ -1,5 +1,7 @@
 package com.mongolz.domain;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.*;
@@ -19,27 +21,16 @@ public class Transaction implements Serializable {
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name="CREATED", nullable = false, updatable = false)
+    @DateTimeFormat(pattern = "MM.dd.yyyy")
     private Date transactionDate = new Date();
 
-    @ManyToOne(fetch=FetchType.EAGER,  cascade = CascadeType.MERGE)
+    @ManyToOne(fetch=FetchType.EAGER,  cascade = CascadeType.ALL)
     @JoinColumn(name="fromAccount")
     private Account  fromAccount;
 
-    @ManyToOne(fetch=FetchType.EAGER,  cascade = CascadeType.MERGE)
+    @ManyToOne(fetch=FetchType.EAGER,  cascade = CascadeType.ALL)
     @JoinColumn(name="toAccount")
     private Account  toAccount;
-
-    /**
-     * No-arg constructor for JavaBean tools
-     */
-    public Transaction() {}
-
-    /**
-     * Full constructor
-     */
-    public Transaction(double amount) {
-        this.amount = amount;
-    }
 
     // ********************** Accessor Methods ********************** //
     public long getId() {
@@ -74,7 +65,7 @@ public class Transaction implements Serializable {
         this.toAccount = toAccount;
     }
 
-    public Date getTransactionDateDate() {
+    public Date getTransactionDate() {
         return transactionDate;
     }
 

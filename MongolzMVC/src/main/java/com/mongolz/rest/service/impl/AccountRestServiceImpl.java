@@ -35,7 +35,7 @@ public class AccountRestServiceImpl implements AccountRestService {
 
 		RestTemplate restTemplate = restHelper.getRestTemplate();
 		HttpEntity httpEntity = new HttpEntity(restHelper.getHttpHeaders());
-		ResponseEntity<Account[]> responseEntity = restTemplate.exchange(baseUrl + userId, HttpMethod.GET, httpEntity, Account[].class);
+		ResponseEntity<Account[]> responseEntity = restTemplate.exchange(baseUrlExtended + userId, HttpMethod.GET, httpEntity, Account[].class);
 		List<Account> accountList = Arrays.asList(responseEntity.getBody());
 		return accountList;
 	}

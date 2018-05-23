@@ -39,7 +39,7 @@ public class TransactionAspect {
     @After("tranMethod(transaction)")
     public void infoTran(JoinPoint joinPoint, Transaction transaction) throws Throwable{
 
-        System.out.println("   **********     TARGET CLASS : " + transaction.getFromAccount().getAccountName() + " -> " + transaction.getToAccount().getAccountName() +
+        System.out.println("   **********     TARGET CLASS : " +  Long.toString(transaction.getFromAccount().getId()) + " -> " +  Long.toString(transaction.getToAccount().getId()) +
                 " " + transaction.getAmount() + " USD success. " + "    **********");
 
         // Mail send to email service

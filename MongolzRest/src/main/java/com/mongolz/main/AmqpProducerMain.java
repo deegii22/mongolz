@@ -1,7 +1,8 @@
 package com.mongolz.main;
 
-import com.mongolz.amqp.AccountService;
-import com.mongolz.amqp.AccountServiceImpl;
+import com.mongolz.amqp.AlertService;
+import com.mongolz.amqp.AlertServiceImpl;
+import com.mongolz.domain.Transaction;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.GenericXmlApplicationContext;
@@ -14,7 +15,7 @@ public class AmqpProducerMain {
 	
     public static void main(String[] args) {
 
-        ApplicationContext context = new GenericXmlApplicationContext("classpath:spring/transaction-app-context.xml");
+        ApplicationContext context = new GenericXmlApplicationContext("classpath:spring/alert-app-context.xml");
 
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
         System.out.println();
@@ -28,8 +29,9 @@ public class AmqpProducerMain {
         }
 
         RabbitTemplate transactionTemplate = context.getBean("transactionTemplate", RabbitTemplate.class);
-        AccountService accountService = new AccountServiceImpl();
-        accountService.publish(transactionTemplate);
+        AlertService accountService = new AlertServiceImpl();
+        Transaction transaction = new Transaction();
+        accountService.publish(transactionTemplate, transaction);
 
         System.out.println("Done ...");
  

@@ -20,7 +20,6 @@ public class AccountController {
     @RequestMapping({"","/all"})
     public List<Account> list(Model model) {
         return  accountService.getAllAccounts();
-
     }
 
     @RequestMapping({"/{userId}"})

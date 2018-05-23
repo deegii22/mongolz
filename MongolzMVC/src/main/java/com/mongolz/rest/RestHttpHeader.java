@@ -44,7 +44,7 @@ public class RestHttpHeader {
                 ((UserCredentialsServiceImpl)
                         userCredentialsService).getUserCredentials();
 
-        String username = userCredentials.getUserName();
+        String username = userCredentials.getUsername();
         String password = userCredentials.getPassword();
 
         String auth = username + ":" + password;

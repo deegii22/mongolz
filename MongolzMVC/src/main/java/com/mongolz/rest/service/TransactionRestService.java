@@ -1,11 +1,13 @@
-package com.mongolz.service;
+package com.mongolz.rest.service;
 
 import com.mongolz.domain.Transaction;
+import org.springframework.stereotype.Component;
 
 import java.util.Date;
 import java.util.List;
 
-public interface TransactionService {
+@Component
+public interface TransactionRestService {
 
     public void doTransaction(Transaction transaction);
     public List<Transaction> findByAccountAndDate(Long accountNo, Date startTxnDate, Date endTxnDate);

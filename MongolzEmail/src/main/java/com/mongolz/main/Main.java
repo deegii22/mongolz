@@ -28,8 +28,8 @@ public class Main {
 
 	private final static String[] configFilesGatewayDemo = {
 		"/META-INF/spring/integration/common.xml",
-			"/META-INF/spring/integration/notificationGateway.xml",
-			"/META-INF/spring/integration/amqp-transaction-app-context.xml",
+			"/META-INF/spring/integration/alertGateway.xml",
+			"/META-INF/spring/integration/amqp-alert-app-context.xml",
 			"/META-INF/spring/integration/jms-email-app-context.xml",
 			"/META-INF/spring/integration/jms-sms-app-context.xml"
 	};

@@ -10,17 +10,18 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class AccountServiceImpl implements AccountService{
-	
- 	@Autowired
-// 	@Qualifier("Jersey")
-   @Qualifier("MVC")
-	private AccountRestService productRestService;
+public class AccountServiceImpl implements AccountService {
 
-	public List<Account> findAll() {
-		return productRestService.findAll();
-	}
+    @Autowired
+    @Qualifier("MVC")
+    private AccountRestService accountRestService;
 
- 
+    public List<Account> findAll() {
+        return accountRestService.findAll();
+    }
+
+    public List<Account> findByUser(Long userId) {
+        return accountRestService.findByUser(userId);
+    }
 
 }

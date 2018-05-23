@@ -5,7 +5,7 @@ import java.util.Date;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "TRANSACTIONS")
+@Table(name = "TRANSACTION")
 public class Transaction implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -14,9 +14,12 @@ public class Transaction implements Serializable {
 
     private double amount;
 
+    @Column(length = 50)
+    private String description;
+
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name="CREATED", nullable = false, updatable = false)
-    private Date txnDate = new Date();
+    private Date transactionDate = new Date();
 
     @ManyToOne(fetch=FetchType.EAGER,  cascade = CascadeType.MERGE)
     @JoinColumn(name="fromAccount")
@@ -71,8 +74,8 @@ public class Transaction implements Serializable {
         this.toAccount = toAccount;
     }
 
-    public Date getTxnDate() {
-        return txnDate;
+    public Date getTransactionDateDate() {
+        return transactionDate;
     }
 
     // ********************** Business Methods ********************** //

@@ -2,32 +2,17 @@ package com.mongolz.domain;
 
 import java.io.Serializable;
 import java.util.Date;
-import javax.persistence.*;
 
-@Entity
-@Table(name = "TRANSACTION")
 public class Transaction implements Serializable {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "TRANSACTION_NO")
     private long id;
 
     private double amount;
 
-    @Column(length = 50)
-    private String description;
+    private Date txnDate = new Date();
 
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name="CREATED", nullable = false, updatable = false)
-    private Date transactionDate = new Date();
+    private Account fromAccount;
 
-    @ManyToOne(fetch=FetchType.EAGER,  cascade = CascadeType.MERGE)
-    @JoinColumn(name="fromAccount")
-    private Account  fromAccount;
-
-    @ManyToOne(fetch=FetchType.EAGER,  cascade = CascadeType.MERGE)
-    @JoinColumn(name="toAccount")
-    private Account  toAccount;
+    private Account toAccount;
 
     /**
      * No-arg constructor for JavaBean tools
@@ -74,8 +59,8 @@ public class Transaction implements Serializable {
         this.toAccount = toAccount;
     }
 
-    public Date getTransactionDateDate() {
-        return transactionDate;
+    public Date getTxnDate() {
+        return txnDate;
     }
 
     // ********************** Business Methods ********************** //

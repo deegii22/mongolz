@@ -30,8 +30,8 @@ public class LoginController {
     @RequestMapping(value = "/postLogin", method = RequestMethod.POST)
     public String PostLogin(UserCredentials credentials, Model model) {
 
-        System.out.println("Orj irsen username:"+credentials.getUserName());
-        UserCredentials validCredentials = credentialsService.findByUserName(credentials.getUserName());
+        System.out.println("Orj irsen username:"+credentials.getUsername());
+        UserCredentials validCredentials = credentialsService.findByUserName(credentials.getUsername());
 
 
         System.out.println("Login:"+validCredentials.toString());

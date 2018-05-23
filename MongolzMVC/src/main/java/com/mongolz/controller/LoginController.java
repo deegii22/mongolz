@@ -22,7 +22,7 @@ public class LoginController {
     @Autowired
     UserService userService;
 
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    @RequestMapping(value = "/", method = RequestMethod.GET)
     public String login() {
         return "login";
     }
@@ -30,23 +30,10 @@ public class LoginController {
     @RequestMapping(value = "/postLogin", method = RequestMethod.POST)
     public String PostLogin(UserCredentials credentials, Model model) {
 
-        System.out.println("Orj irsen");
-        System.out.println("Orj irsen username:"+credentials.getUsername());
-//        if(credentials == null){
-//            System.out.println("Orj irsen");
-//            credentials = new UserCredentials();
-//            credentials.setPassword("eta");
-//            credentials.setUsername("eta");
-//        }
-//        credentials = new UserCredentials();
-//        credentials.setPassword("eta");
-//        credentials.setUsername("eta");
         UserCredentials validCredentials = credentialsService.findByUserName(credentials.getUsername());
 
         if (validCredentials == null)
             return "login";
-
-        //System.out.println(validCredentials.getUsername());
 
         model.addAttribute("user", validCredentials.getUsername());
         return "redirect:/welcome";

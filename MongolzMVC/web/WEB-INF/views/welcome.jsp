@@ -24,26 +24,19 @@
 
         </div>
 
-        <%--<div class="container">--%>
-            <%--<c:choose>--%>
-                <%--<c:when test="${empty user}">--%>
-                    <%--<a href="<spring:url value='/login' />" class="btn btn-default pull-right"> Login</a>--%>
-                <%--</c:when>--%>
-                <%--<c:otherwise>--%>
-                    <%--<a href="<spring:url value="/members/add" />" class="btn btn-default pull-right">Add Member</a>--%>
-                    <%--<a href="<spring:url value="/members" />" class="btn btn-default pull-right">Member List</a>--%>
-                    <%--<br>--%>
-                    <%--<a href="<spring:url value="/products/add" />" class="btn btn-default pull-right">Add Product</a>--%>
-                    <%--<a href="<spring:url value="/products/all" />" class="btn btn-default pull-right">Product List</a>--%>
-                    <%--<br>--%>
-                    <%--<a href="<spring:url value='/logout' />" class="btn btn-default pull-right"> Logout</a>--%>
-                <%--</c:otherwise>--%>
-            <%--</c:choose>--%>
-            <%--<a href="<spring:url value='/users' />" class="btn btn-default">--%>
-                <%--<span class="glyphicon-hand-left glyphicon"></span> Go to Community--%>
-            <%--</a>--%>
-        <%--</div>--%>
-        <%--<div class="pull-left"> <h3>${SpecialBlurb}</h3> </div>--%>
+        <div class="container">
+            <c:choose>
+                <c:when test="${empty user}">
+                    <a href="<spring:url value='/login' />" class="btn btn-default pull-right"> Login</a>
+                </c:when>
+                <c:otherwise>
+                    <a href="<spring:url value="/accounts" />" class="btn btn-default pull-right">Accounts</a>
+                    <a href="<spring:url value="/transaction/add" />" class="btn btn-default pull-right">Transaction</a>
+                    <a href="<spring:url value='/logout' />" class="btn btn-default pull-right"> Logout</a>
+                </c:otherwise>
+            </c:choose>
+        </div>
+        <div class="pull-left"> <h3>${SpecialBlurb}</h3> </div>
     </div>
 </section>
 

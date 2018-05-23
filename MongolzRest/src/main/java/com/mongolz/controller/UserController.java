@@ -28,8 +28,15 @@ public class UserController {
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public User addNewUserForm(@RequestBody User userToBeAdded) {
+
         System.out.println(userToBeAdded.toString());
-        userService.saveFull(userToBeAdded);
+        try {
+            userService.saveFull(userToBeAdded);
+        }catch (Exception up) {
+            System.out.println(up.toString());
+            System.out.println("User creation failed!!!");
+        }
+
         return null;
     }
 }

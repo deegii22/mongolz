@@ -21,7 +21,7 @@ public class TransactionController {
     @Autowired
     private AccountService accountService;
 
-    @RequestMapping("/{accountNo}&{startDate}&{endDate}")
+    @RequestMapping("/{accountNo}/startDate/{startDate}/endDate/{endDate}")
     public List<Transaction> findByAccountAndDate(@PathVariable("accountNo") Long accountNo, @PathVariable("startDate") Date startDate, @PathVariable("endDate") Date endDate) {
 
         return transactionService.findByAccountAndDate(accountNo, startDate, endDate);

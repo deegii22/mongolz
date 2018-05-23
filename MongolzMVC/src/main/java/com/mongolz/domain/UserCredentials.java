@@ -11,43 +11,64 @@ import java.util.List;
 
 
 @Entity(name = "CREDENTIALS")
-@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="@jid")
+@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "@jid")
 public class UserCredentials {
 
-	 @Id
-	 @Column(nullable = false, unique = true)
-	@NotEmpty(message= "{String.empty}")
-	 String username;
-	 @Column(nullable = false)
-	 @Size(min=6, max = 32, message= "{Size.name.validation}")
-	 String password;
-	String verifyPassword;
-	Boolean enabled;
+    @Id
+    @Column( nullable = false, unique = true, length = 127)
+    @NotEmpty
+    String username;
 
- 	public String getUsername() {
-		return username;
-	}
-	public void setUsername(String username) {
-		this.username = username;
-	}
-	public String getPassword() {
-		return password;
-	}
-	public void setPassword(String password) {
-		this.password = password;
-	}
-	public String getVerifyPassword() {
-		return verifyPassword;
-	}
-	public void setVerifyPassword(String verifyPassword) {
-		this.verifyPassword = verifyPassword;
-	}
-	public Boolean getEnabled() {
-		return enabled;
-	}
-	public void setEnabled(Boolean enabled) {
-		this.enabled = enabled;
-	}
- 
- 	
+    @Size(min = 6, max = 32, message = "{Size.name.validation}")
+    @Column(nullable = false)
+    String password;
+
+
+    String verifyPassword;
+    Boolean enabled;
+
+    @OneToOne(mappedBy = "userCredentials", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    private User user;
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getVerifyPassword() {
+        return verifyPassword;
+    }
+
+    public void setVerifyPassword(String verifyPassword) {
+        this.verifyPassword = verifyPassword;
+    }
+
+    public Boolean getEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+
 }

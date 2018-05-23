@@ -26,7 +26,7 @@ public class UserController {
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public User addNewUserForm(@RequestBody User userToBeAdded) {
-        userService.save(userToBeAdded);
+        userService.saveFull(userToBeAdded);
         return null;
     }
 }

@@ -32,12 +32,15 @@ public class Transaction implements Serializable {
     @DateTimeFormat(pattern = "MM.dd.yyyy")
     private Date transactionDate = new Date();
 
-    @ManyToOne(fetch=FetchType.EAGER,  cascade = CascadeType.ALL)
+    @Transient
+    private String error;
+
+    @ManyToOne(fetch=FetchType.EAGER,  cascade = CascadeType.MERGE)
     @JoinColumn(name="fromAccount")
     @Valid
     private Account  fromAccount;
 
-    @ManyToOne(fetch=FetchType.EAGER,  cascade = CascadeType.ALL)
+    @ManyToOne(fetch=FetchType.EAGER,  cascade = CascadeType.MERGE)
     @JoinColumn(name="toAccount")
     @Valid
     private Account  toAccount;
@@ -89,6 +92,14 @@ public class Transaction implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getError() {
+        return error;
+    }
+
+    public void setError(String error) {
+        this.error = error;
     }
 
     // ********************** Business Methods ********************** //

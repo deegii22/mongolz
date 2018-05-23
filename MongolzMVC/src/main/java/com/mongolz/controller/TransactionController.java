@@ -2,7 +2,7 @@ package com.mongolz.controller;
 
 import com.mongolz.domain.Transaction;
 import com.mongolz.service.AccountService;
-import  com.mongolz.service.TransactionService;
+import com.mongolz.service.TransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -34,15 +34,21 @@ public class TransactionController {
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public String processAddNewTranForm(Model model, @ModelAttribute("newTransaction") @Valid Transaction transactionToBeAdded, BindingResult result) {
 
-        if(result.hasErrors()) {
+        if (result.hasErrors()) {
             model.addAttribute("accounts", accountService.findByUser(1L));
             return "transaction";
         }
 
         //  Error caught by ControllerAdvice IF no authorization...
-        transactionService.doTransaction(transactionToBeAdded);
+        transactionToBeAdded = transactionService.doTransaction(transactionToBeAdded);
 
-        return "redirect:/accounts";
+        if (transactionToBeAdded.getError().equals(""))
+            return "redirect:/accounts";
+        else {
+            model.addAttribute("error", transactionToBeAdded.getError());
+            model.addAttribute("accounts", accountService.findByUser(1L));
+            return "transaction";
+        }
 
     }
 

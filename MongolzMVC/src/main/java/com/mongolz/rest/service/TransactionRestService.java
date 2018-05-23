@@ -9,6 +9,6 @@ import java.util.List;
 @Component
 public interface TransactionRestService {
 
-    public void doTransaction(Transaction transaction);
+    public Transaction doTransaction(Transaction transaction);
     public List<Transaction> findByAccountAndDate(Long accountNo, LocalDate startTxnDate, LocalDate endTxnDate);
 }

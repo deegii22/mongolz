@@ -7,6 +7,6 @@ import java.util.List;
 
 public interface TransactionService {
 
-    public void doTransaction(Transaction transaction);
+    public Transaction doTransaction(Transaction transaction);
     public List<Transaction> findByAccountAndDate(Long accountNo, LocalDate startTxnDate, LocalDate endTxnDate);
 }

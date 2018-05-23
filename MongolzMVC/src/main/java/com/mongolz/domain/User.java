@@ -58,7 +58,7 @@ public class User implements Serializable {
     private boolean admin = false;
 
     @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "userCredId")
+    @JoinColumn(name = "userId")
 //	@JsonBackReference
     private UserCredentials userCredentials;
 

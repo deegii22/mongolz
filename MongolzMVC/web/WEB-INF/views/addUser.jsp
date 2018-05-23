@@ -96,7 +96,7 @@
                 <label class="control-label col-lg-2">Role</label>
                 <div class="col-lg-10">
                     <div class="form:input-prepend">
-                        <form:input  path="userCredentials.authority[0].authority" type="text" value="ROLE_USER" class="form:input-large"/>
+                        <form:input  path="userCredentials.authority[0].authority" type="text" value="ROLE_ADMIN" class="form:input-large"/>
                         <form:errors path="userCredentials.authority[0].authority" cssClass="text-danger"/>
                     </div>
                 </div>

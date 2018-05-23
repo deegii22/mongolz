@@ -10,17 +10,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-@Entity(name = "CREDENTIALS")
+@Entity(name = "Authentication")
 @JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "@jid")
 public class UserCredentials {
 
     @Id
-    @Column(nullable = false, unique = true)
-    @NotEmpty(message = "{String.empty}")
+    @Column(name = "USER", nullable = false, unique = true, length = 127)
     String userName;
+
     @Column(nullable = false)
-    @Size(min = 6, max = 32, message = "{Size.name.validation}")
     String password;
+
+    @Column(name = "PASSWORD", nullable = false, length = 32)
     String verifyPassword;
     Boolean enabled;
 
@@ -29,9 +30,9 @@ public class UserCredentials {
     private User user;
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinTable(name = "CREDENTIAL_ROLE", joinColumns = {@JoinColumn(name = "credential_id")},
-            inverseJoinColumns = {@JoinColumn(name = "role_id", unique = true)})
-    List<Role> roles = new ArrayList<Role>();
+    @JoinTable(name = "credential_authority", joinColumns = {@JoinColumn(name = "credential_id")},
+            inverseJoinColumns = {@JoinColumn(name = "authority_id", unique = true)})
+    List<Authority> authority = new ArrayList<Authority>();
 
 
     public String getUsername() {
@@ -66,8 +67,13 @@ public class UserCredentials {
         this.enabled = enabled;
     }
 
-    public List<Role> getRoles(){ return roles;}
-    public void setRoles(List<Role> roles) {this.roles = roles;}
+    public List<Authority> getAuthority() {
+        return authority;
+    }
+
+    public void setAuthority(List<Authority> authority) {
+        this.authority = authority;
+    }
 
 
 }

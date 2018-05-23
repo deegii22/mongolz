@@ -33,7 +33,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "ID")
+    @Column(name = "USER_ID")
     private Long id = null;
 
     @Column(name = "FIRSTNAME", nullable = false)
@@ -49,8 +49,8 @@ public class User implements Serializable {
     private boolean admin = false;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "userCredId")
-	@JsonBackReference
+    @JoinColumn(name = "userId")
+    @JsonBackReference
     private UserCredentials userCredentials;
 
     @Column(name = "CHANNEL", nullable = false)
@@ -126,7 +126,7 @@ public class User implements Serializable {
 
     public String toString() {
         return " firstname:" + firstName + " lastName:" + lastName + " email:" +
-                email + " admin:" + admin + " channel:" + channel + "username:"+userCredentials.getUsername() + "password:"+userCredentials.getPassword();
+                email + " admin:" + admin + " channel:" + channel + "username:" + userCredentials.getUsername() + "password:" + userCredentials.getPassword();
     }
 
 

@@ -1,18 +1,26 @@
 package com.mongolz.domain;
 
-
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+import javax.persistence.Version;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-
 @Entity
-@JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="id")
-public class Role {
+@Table(name = "AUTHORITY")
+public class Authority {
 
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
@@ -35,10 +43,10 @@ public class Role {
     public void setUsername(String username) {
         this.username = username;
     }
-    public String getAuthority() {
+    public String getRole() {
         return authority;
     }
-    public void setAuthority(String authority) {
+    public void setRole(String authority) {
         this.authority = authority;
     }
 

@@ -9,4 +9,6 @@ public interface TransactionService {
 
     public void doTransaction(Transaction transaction);
     public List<Transaction> findByAccountAndDate(Long accountNo, Date startTxnDate, Date endTxnDate);
+    public List<Transaction> findAll();
+    public void save(Transaction transaction);
 }

@@ -49,11 +49,11 @@ public class TransactionController {
 
     @RequestMapping({"/{accountId}"})
     public String list(@PathVariable("accountId") Long accountId, Model model) {
-        Date fromDate = new Date();
+        Date toDate = new Date();
         Calendar cal = new GregorianCalendar();
-        cal.setTime(fromDate);
+        cal.setTime(toDate);
         cal.add(Calendar.DAY_OF_MONTH, -30);
-        Date toDate = cal.getTime();
+        Date fromDate = cal.getTime();
         model.addAttribute("transactions", transactionService.findByAccountAndDate(accountId, fromDate, toDate));
         return "transactionList";
     }

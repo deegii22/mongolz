@@ -37,7 +37,7 @@ import java.util.Locale;
 @Service("emailService")
 public class EmailService {
 
-     private static final String MONGOLZ_IMG = "templates/images/mongolz.jpg";
+     private static final String MONGOLZ_IMG = "templates/images/logo-mongolz_blue.jpg";
     
      private static final String JPG_MIME = "image/jpg";
      private static final String DOCX_MIME = "application/vnd.openxmlformats-officedocument.wordprocessingml.document";

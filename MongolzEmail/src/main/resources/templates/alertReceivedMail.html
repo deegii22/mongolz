@@ -13,20 +13,21 @@
     </div>
         <p> Greetings  <span th:text="${name}"> </span> </p>
   
-            <H4> We have received your transaction and are Processing it !</H4>
+            <H4> We have received your transaction !</H4>
   
         <p>Here are your Transaction details:</p>
  		<b>Transaction Number: </b> <span th:text="${transaction.transaction.id}"></span>
 
   <div style="text-indent: 3em;">
 	 		<p><b>From Account: </b> <span th:text="${transaction.transaction.fromAccount.id}"></span></p>
-	 		<p><b>To Account: </b> <span th:text="${transaction.transaction.toAccount.id}"></span></p>
+            <p><b>Transaction date: </b> <span th:text="${transaction.transaction.transactionDate}"></span></p>
+	 		<p><b>To Account: </b><span th:text="${transaction.transaction.toAccount.accountName}"></span> - <span th:text="${transaction.transaction.toAccount.id}"></span></p>
             <p><b>Amount: </b> <span th:text="${transaction.transaction.amount}"></span></p>
-	 		<p><b>Transaction date: </b> <span th:text="${transaction.transaction.transactionDate}"></span></p>
+	 		<p><b>Transaction description: </b> <span th:text="${transaction.transaction.description}"></span></p>
 </div>
          <p><br />
             Thanks for your transaction, <br />
-            &emsp; <em><b>I'm the Guy! - Online Bank</b></em>
+            &emsp; <em><b>Mongolz - Online Bank</b></em>
         </p>
     </body>
 </html>

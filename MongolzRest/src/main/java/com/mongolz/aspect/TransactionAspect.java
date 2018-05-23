@@ -15,19 +15,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class TransactionAspect {
 
-//    @Pointcut("execution(* com.mongolz.service..*(..))")
-//    public void adviceMethod() {}
-//
-//    @Before("adviceMethod()")
-//    public void Advice(JoinPoint joinPoint) { //, User user
-//        Logger log = Logger.getLogger("");
-//        log.info("   **********     TARGET CLASS : " + joinPoint.getSignature().getName() + "    **********");
-//        System.out.println();
-//        System.out.println( "   **********     TARGET CLASS : " +
-//                joinPoint.getSignature().getDeclaringTypeName() + "." +
-//                joinPoint.getSignature().getName() +
-//                "    **********");
-//    }
     @Pointcut("within(com.mongolz.service..*) && args(transaction)")
     public void tranMethod(Transaction transaction){};
 
@@ -43,7 +30,7 @@ public class TransactionAspect {
                 " " + transaction.getAmount() + " USD success. " + "    **********");
 
         // Mail send to email service
-        /*ApplicationContext context = new GenericXmlApplicationContext("classpath:spring/alert-app-context.xml");
+        ApplicationContext context = new GenericXmlApplicationContext("classpath:spring/alert-app-context.xml");
 
         RabbitTemplate transactionTemplate = context.getBean("alertTemplate", RabbitTemplate.class);
         AlertService alertService = new AlertServiceImpl();
@@ -54,7 +41,7 @@ public class TransactionAspect {
         } catch (InterruptedException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
-        }*/
+        }
 
         System.out.println("Sent mail ...");
     }

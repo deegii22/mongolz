@@ -12,7 +12,7 @@ public class AccountController {
 	
 	@Autowired
 	private AccountService accountService;
- 
+
  	@RequestMapping({"","/all"})
 	public String list(Model model) {
 		model.addAttribute("accounts", accountService.findAll());

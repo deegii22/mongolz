@@ -41,7 +41,7 @@
 					<div class="thumbnail">
  						<div class="caption">
 
-						 <a href="<spring:url value="/accounts/${account.id}" />" class="btn btn-primary  btn-mini  ">${account.accountId} View</a>
+						 <a href="<spring:url value="/accounts/${account.id}" />" class="btn btn-primary  btn-mini  ">${account.id} View</a>
  				</h4>
  					</div>
 					</div>

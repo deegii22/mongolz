@@ -15,13 +15,15 @@
   
             <H4> We have received your order and are Processing it !</H4>
   
-        <p>Here are your Order details:</p>
- 		<b>Order Number: </b> <span th:text="${order.orderNumber}"></span>
+        <p>Here are your Transaction details:</p>
+ 		<b>Transaction Number: </b> <span th:text="${transaction.id}"></span>
  		
 <!--          <div th:each="item : ${order.items}" >  -->
   <div style="text-indent: 3em;">		
-	 		<p><b>Name: </b> <span th:text="${order.name}"></span></p>
-	 		<p><b>Quantity: </b> <span th:text="${order.quantity}"></span></p>
+	 		<p><b>Name: </b> <span th:text="${transaction.amount}"></span></p>
+	 		<p><b>From Account: </b> <span th:text="${transaction.fromAccount}"></span></p>
+	 		<p><b>To Account: </b> <span th:text="${transaction.toAccount}"></span></p>
+	 		<p><b>Transaction date: </b> <span th:text="${transaction.txnDate}"></span></p>
 <!-- 	 		<p><b>Price: </b> <span th:text="${item.product.price}"></span></p> -->
 </div>	
 <!-- 	 		<p><b>Total: </b> <span th:text="${item.quantity} * ${item.product.price}"></span></p>
@@ -29,7 +31,7 @@
  -->		
  		
          <p><br />
-            Thanks for your order, <br />
+            Thanks for your transaction, <br />
             &emsp; <em><b>I'm the Guy! - Online</b></em>
         </p>
     </body>

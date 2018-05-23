@@ -3,26 +3,29 @@ package com.mongolz.domain;
 import java.io.Serializable;
 
 public class Account implements Serializable {
-    private static final long serialVersionUID = 5784L;
-
     private long id;
 
-    private String accountId;
+    private String accountName;
 
-    private String channel;
+    private double balance;
 
-    public String getChannel() {
-        return channel;
+    private User  user;
+
+    /**
+     * No-arg constructor for JavaBean tools
+     */
+    public Account() {
     }
 
-    public void setChannel(String channel) {
-        this.channel = channel;
+    /**
+     * Full constructor
+     */
+    public Account(String accountName, double balance) {
+        this.accountName = accountName;
+        this.balance = balance;
     }
 
-    public Account(String accountId) {
-        this.accountId = accountId;
-    }
-
+    // ********************** Accessor Methods ********************** //
     public long getId() {
         return id;
     }
@@ -31,11 +34,30 @@ public class Account implements Serializable {
         this.id = id;
     }
 
-    public String getAccountId() {
-        return accountId;
+    public String getAccountName() {
+        return accountName;
     }
 
-    public void setAccountId(String accountId) {
-        this.accountId = accountId;
+    public void setAccountName(String accountName) {
+        this.accountName = accountName;
     }
+
+    public double getBalance() {
+        return balance;
+    }
+
+    public void setBalance(double balance) {
+        this.balance = balance;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+
+    // ********************** Business Methods ********************** //
 }

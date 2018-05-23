@@ -23,17 +23,17 @@
 
  
  	
-		<channel id="fromAmqpNotification" />
- 	<amqp:inbound-channel-adapter channel="fromAmqpNotification"
-		queue-names="transactionQueue" connection-factory="amqpConnectionFactory" />
+		<channel id="fromAmqpAlert" />
+ 	<amqp:inbound-channel-adapter channel="fromAmqpAlert"
+		queue-names="alertQueue" connection-factory="amqpConnectionFactory" />
 
-    <transformer id="transformTransaction" ref="transactionTransformer"  input-channel="fromAmqpNotification" output-channel="routeTransaction" />
- 	<beans:bean id="transactionTransformer" class="com.mongolz.integration.TransactionTransformerImpl" />
+    <transformer id="transformAlert" ref="alertTransformer"  input-channel="fromAmqAlert" output-channel="routeAlert" />
+ 	<beans:bean id="alertTransformer" class="com.mongolz.integration.AlertTransformerImpl" />
 
 <!-- input order && transformedOrder need to go to JMS -->
 
-	 	<channel id="routeTransaction" />
- 	<router input-channel="routeTransaction" ref="channelRouter" method="determineChannelRoute"/>
+	 	<channel id="routeAlert" />
+ 	<router input-channel="routeAlert" ref="channelRouter" method="determineChannelRoute"/>
  
     <channel id="sms"/>
 	<jms:outbound-channel-adapter id="jmsoutSms" channel="sms" destination="smsQueue"/>

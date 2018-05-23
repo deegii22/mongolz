@@ -7,7 +7,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <div class="logo1"></div>
+            <div class="logo1"><img src="<spring:url value="/resource/images/logo-mongolz_blue1.png"  htmlEscape="true" />" style="height: 50px;"></div>
         </div>
 
         <div class="navbar-collapse collapse" id="glmt-menu">

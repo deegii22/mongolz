@@ -1,6 +1,7 @@
 package com.mongolz.controller;
 
 import com.mongolz.domain.Transaction;
+import com.mongolz.domain.TransactionPeriod;
 import com.mongolz.service.AccountService;
 import com.mongolz.service.TransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,10 +54,19 @@ public class TransactionController {
     }
 
     @RequestMapping({"/{accountId}"})
-    public String list(@PathVariable("accountId") Long accountId, Model model) {
+    public String list(@PathVariable("accountId") Long accountId, Model model, @ModelAttribute("transactionPeriod") TransactionPeriod transactionPeriod) {
         LocalDate toDate = LocalDate.now();
         LocalDate fromDate = toDate.plusMonths(-1);
         model.addAttribute("transactions", transactionService.findByAccountAndDate(accountId, fromDate, toDate.plusDays(1)));
+        model.addAttribute("accountId",accountId);
+        return "transactionList";
+    }
+
+    @RequestMapping(value = {"/{accountId}"}, method = RequestMethod.POST)
+    public String list(@PathVariable("accountId") Long accountId, Model model, @ModelAttribute("transactionPeriod") @Valid TransactionPeriod transactionPeriod, BindingResult result) {
+        LocalDate fromDate = transactionPeriod.getFromDate();
+        LocalDate toDate = transactionPeriod.getToDate();
+        model.addAttribute("transactions", transactionService.findByAccountAndDate(accountId, fromDate, toDate));
         return "transactionList";
     }
 }

@@ -14,6 +14,7 @@ import org.springframework.context.support.GenericXmlApplicationContext;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.math.BigDecimal;
 
 public class AmqpProducerMain {
 	
@@ -37,7 +38,7 @@ public class AmqpProducerMain {
         RabbitTemplate alertTemplate = context.getBean("alertTemplate", RabbitTemplate.class);
         AlertService alertService = new AlertServiceImpl();
         Transaction transaction = new Transaction();
-        transaction.setAmount(123.00);
+        transaction.setAmount(new BigDecimal(123000.0));
         Account account = new Account();
         User user = new User();
         user.setChannel("EMAIL");

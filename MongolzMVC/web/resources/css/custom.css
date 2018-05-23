@@ -14,7 +14,7 @@
     width: 261px;
     float: left;
     height: 47px;
-    background: url("../images/logo.png") 0 0 no-repeat;
+    background: url("../images/logo-mongolz.png") 0 0 no-repeat;
 }
 .bg {
     background: #313131 url("../images/bg.jpg") 0 0 no-repeat /*center bottom fixed*/;
@@ -75,7 +75,7 @@
     margin-bottom: 0px !important;
 }
 .logo1 {
-    background: url(../images/logo-DarkBg.png) no-repeat scroll left 0 transparent;
+    background: url(../images/logo-mongolz.png) no-repeat scroll left 0 transparent;
     float: left;
     height: 35px;
     margin: 8px 20px;

@@ -47,7 +47,7 @@ public class Main {
 
 		System.out.println("\n========================================================="
 				+ "\n                                                         "
-				+ "\n    Welcome to the WAA 545 RouteOrder System!                 "
+				+ "\n    Welcome to the WAA 545 RouteTransaction System!                 "
 				+ "\n                                                         "
 				+ "\n    For more information please visit:                   "
 				+ "\n    REFER to the Slides & your Class NOTES!              "

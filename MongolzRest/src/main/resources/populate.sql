@@ -9,8 +9,8 @@ INSERT INTO credential_authority (credential_id,authority_id) VALUES ('eta',1);
 INSERT INTO credential_authority (credential_id,authority_id) VALUES ('admin',2);
 INSERT INTO credential_authority (credential_id,authority_id) VALUES ('admin',3);
 
-INSERT INTO `USERS` (user_id,firstname, lastname,email,channel, is_admin, userId) VALUES (1,'Admin','Admin','admin@mongolz.com','MSG',1,'admin');
-INSERT INTO `USERS` (user_id,firstname, lastname,email,channel, is_admin,userId) VALUES (2,'Enkhtulga','Tseveenkhuu','ts.enkh@wrench.com','MSG',1,'eta');
+INSERT INTO `USERS` (user_id,firstname, lastname,email,channel, is_admin, userId) VALUES (1,'Admin','Admin','admin@mongolz.com','EMAIL',1,'admin');
+INSERT INTO `USERS` (user_id,firstname, lastname,email,channel, is_admin,userId) VALUES (2,'Enkhtulga','Tseveenkhuu','ts.enkh@wrench.com','EMAIL',1,'eta');
 
 insert into ACCOUNT (ACCOUNT_NO, AccountName, balance, user_user_id) values (986369, 'Checking', 50000, 1);
 insert into ACCOUNT (ACCOUNT_NO, AccountName, balance, user_user_id) values (986367, 'Saving', 100000, 1);

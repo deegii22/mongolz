@@ -37,7 +37,7 @@ import java.util.Locale;
 @Service("emailService")
 public class EmailService {
 
-     private static final String IM_THE_GUY = "templates/images/imtheguy.jpg";
+     private static final String MONGOLZ_IMG = "templates/images/mongolz.jpg";
     
      private static final String JPG_MIME = "image/jpg";
      private static final String DOCX_MIME = "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
@@ -76,7 +76,7 @@ public class EmailService {
         message.setText(htmlContent, true );
    
         // Add imtheguy.jpg
-        message.addInline("imtheguy", new ClassPathResource(IM_THE_GUY), JPG_MIME);
+        message.addInline("mongolzimg", new ClassPathResource(MONGOLZ_IMG), JPG_MIME);
         
         
         // Add attachment
@@ -87,8 +87,6 @@ public class EmailService {
    // Alternative for attaching 
 //        File file = new File(documentLocation);
 //      message.addAttachment(documentName, file);
-
-
 
          
          

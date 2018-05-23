@@ -23,11 +23,11 @@
 	<router input-channel="processItem" ref="itemRouter" method="processItem"/>
 
 
-	<channel id="highPrice"/>
-	<channel id="moderatePrice"/>
+	<channel id="sms"/>
+	<channel id="email"/>
 
-	<jms:outbound-channel-adapter id="jmsoutHighPrice" channel="highPrice" destination="highPriceQueue" />
-	<jms:outbound-channel-adapter id="jmsoutModeratePrice" channel="moderatePrice" destination="moderatePriceQueue" />
+	<jms:outbound-channel-adapter id="jmsoutHighPrice" channel="sms" destination="smsQueue" />
+	<jms:outbound-channel-adapter id="jmsoutModeratePrice" channel="email" destination="emailQueue" />
 
 
 	<channel id="fromAmqpItem" />
@@ -41,8 +41,8 @@
 
 
 	<!-- input order && transformedItem need to go to JMS -->
-	<bridge input-channel='transformedItem' output-channel='highPrice'/>
-	<bridge input-channel='transformedItem' output-channel='moderatePrice'/>
+	<bridge input-channel='transformedItem' output-channel='sms'/>
+	<bridge input-channel='transformedItem' output-channel='email'/>
 
 
 </beans:beans>

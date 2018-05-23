@@ -1,7 +1,8 @@
  
 package com.mongolz.integration;
 
-import com.mongolz.domain.RouteItem;
+import com.mongolz.domain.RouteTransaction;
+import com.mongolz.domain.Transaction;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.integration.annotation.MessageEndpoint;
@@ -21,13 +22,15 @@ public class ItemRouter {
      * not the order is a delivery or pickup.
      */
 	@Router(inputChannel="processItem")
-	public String processItem(RouteItem item) {
+	public String processItem(RouteTransaction transaction) {
 	    String destination = null;
 
-	    if (item.getItem().getPrice() > 20.0){
-			destination = "highPrice";
+		System.out.println("In Router ....");
+
+	    if (transaction.getChannel().equals("SMS")){
+			destination = "sms";
 		} else {
-			destination = "moderatePrice";
+			destination = "email";
 		}
 	
 		return destination;

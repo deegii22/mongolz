@@ -1,9 +1,12 @@
 package com.mongolz.domain;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import java.util.ArrayList;
 import java.util.List;
 
 
+@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "@jid")
 public class UserCredentials {
 
     String userName;
@@ -11,6 +14,7 @@ public class UserCredentials {
     String verifyPassword;
     Boolean enabled;
 
+// 	@JsonManagedReference
     private User user;
 
     List<Role> roles = new ArrayList<Role>();

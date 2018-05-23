@@ -1,3 +1,5 @@
+
+package com.mongolz.emailservice;
 /*
  * =============================================================================
  * 
@@ -17,9 +19,8 @@
  * 
  * =============================================================================
  */
-package com.mongolz.emailservice;
 
-import com.mongolz.domain.Transaction;
+import com.mongolz.domain.RouteTransaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -30,6 +31,7 @@ import org.thymeleaf.spring4.SpringTemplateEngine;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
+import java.io.File;
 import java.util.Locale;
 
 @Service("emailService")
@@ -46,11 +48,14 @@ public class EmailService {
   @Autowired
     private SpringTemplateEngine templateEngine;
     
-    /* 
+
+/*
      * Send HTML mail  
      */
+
+
     public void sendAlertReceivedMail(
-            final String recipientName, final String recipientEmail, Transaction transaction, String documentName, final Locale locale)
+            final String recipientName, final String recipientEmail, RouteTransaction transaction, final Locale locale)
             throws MessagingException {
         
         // Prepare the Thymeleaf evaluation context
@@ -67,21 +72,24 @@ public class EmailService {
         message.setTo(recipientEmail);
 
         // Create the HTML body using Thymeleaf..template is alertReceivedMail.html
-        final String htmlContent = this.templateEngine.process("transactionReceivedMail", thymeContext);
-        message.setText(htmlContent, true /* isHtml */);
+        final String htmlContent = this.templateEngine.process("alertReceivedMail", thymeContext);
+        message.setText(htmlContent, true );
    
         // Add imtheguy.jpg
         message.addInline("imtheguy", new ClassPathResource(IM_THE_GUY), JPG_MIME);
         
         
         // Add attachment
-        String documentLocation = "templates/images/" + documentName ;
-         message.addAttachment(documentName, new ClassPathResource(documentLocation));
-/* 
+//        String documentLocation = "templates/images/" + documentName ;
+//         message.addAttachment(documentName, new ClassPathResource(documentLocation));
+
+
    // Alternative for attaching 
-        File file = new File(documentLocation);
-      message.addAttachment(documentName, file);
-*/ 
+//        File file = new File(documentLocation);
+//      message.addAttachment(documentName, file);
+
+
+
          
          
         // Send email
@@ -91,3 +99,5 @@ public class EmailService {
 
  
 }
+
+

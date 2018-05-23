@@ -16,14 +16,14 @@
             <H4> We have received your order and are Processing it !</H4>
   
         <p>Here are your Transaction details:</p>
- 		<b>Transaction Number: </b> <span th:text="${transaction.id}"></span>
+ 		<b>Transaction Number: </b> <span th:text="${transaction.transaction.id}"></span>
  		
 <!--          <div th:each="item : ${order.items}" >  -->
   <div style="text-indent: 3em;">		
-	 		<p><b>Name: </b> <span th:text="${transaction.amount}"></span></p>
-	 		<p><b>From Account: </b> <span th:text="${transaction.fromAccount}"></span></p>
-	 		<p><b>To Account: </b> <span th:text="${transaction.toAccount}"></span></p>
-	 		<p><b>Transaction date: </b> <span th:text="${transaction.txnDate}"></span></p>
+	 		<p><b>Name: </b> <span th:text="${transaction.transaction.amount}"></span></p>
+	 		<p><b>From Account: </b> <span th:text="${transaction.transaction.fromAccount}"></span></p>
+	 		<p><b>To Account: </b> <span th:text="${transaction.transaction.toAccount}"></span></p>
+	 		<p><b>Transaction date: </b> <span th:text="${transaction.transaction.transactionDate}"></span></p>
 <!-- 	 		<p><b>Price: </b> <span th:text="${item.product.price}"></span></p> -->
 </div>	
 <!-- 	 		<p><b>Total: </b> <span th:text="${item.quantity} * ${item.product.price}"></span></p>

@@ -3,7 +3,6 @@ package com.mongolz.controller;
 import javax.validation.Valid;
 
 import com.mongolz.domain.Authority;
-import com.mongolz.service.AuthorityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

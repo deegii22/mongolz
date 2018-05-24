@@ -25,3 +25,4 @@ values (5, 'cola', 986369, 986403, STR_TO_DATE('01-05-2018', '%d-%m-%Y'));
 insert into TRANSACTION (amount, description, fromAccount, toAccount, created)
 values (5000, 'car', 986369, 986368, STR_TO_DATE('20-05-2018', '%d-%m-%Y'));
 
+

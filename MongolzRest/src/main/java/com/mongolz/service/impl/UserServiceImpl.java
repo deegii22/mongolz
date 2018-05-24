@@ -3,6 +3,7 @@ package com.mongolz.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,21 +22,22 @@ public class UserServiceImpl implements com.mongolz.service.UserService {
     private UserCredentialsService credentialsService;
 
 
-    public void save( User user) {
+    public void save(User user) {
         userDao.save(user);
     }
 
     @Override
-    public void saveFull( User user) {
+    public void saveFull(User user) {
         credentialsService.save(user.getUserCredentials());
         userDao.save(user);
     }
 
-
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public List<User> findAll() {
-        return (List<User>)userDao.findAll();
+        return (List<User>) userDao.findAll();
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public User findByUsername(String username) {
         return userDao.findByUsername(username);
     }

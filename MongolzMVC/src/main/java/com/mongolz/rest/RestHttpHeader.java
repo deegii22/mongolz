@@ -21,9 +21,6 @@ import java.util.Collections;
 public class RestHttpHeader {
     protected RestTemplate restTemplate;
 
-    @Autowired
-    protected UserCredentialsService userCredentialsService;
-
     public RestHttpHeader() {
         restTemplate = new RestTemplate();
         restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
@@ -39,13 +36,8 @@ public class RestHttpHeader {
      */
     public HttpHeaders getHttpHeaders() {
 
-        // KLUDGE to get Credentials...
-        UserCredentials userCredentials =
-                ((UserCredentialsServiceImpl)
-                        userCredentialsService).getUserCredentials();
-
-        String username = userCredentials.getUsername();
-        String password = userCredentials.getPassword();
+        String username = "admin";
+        String password = "admin";
 
         String auth = username + ":" + password;
         byte[] encodedAuth = Base64.encodeBase64(

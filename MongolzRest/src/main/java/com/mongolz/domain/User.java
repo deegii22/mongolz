@@ -45,9 +45,6 @@ public class User implements Serializable {
     @Column(name = "EMAIL", nullable = false)
     private String email;
 
-    @Column(name = "IS_ADMIN", nullable = true)
-    private boolean admin = false;
-
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "userId")
     @JsonBackReference
@@ -92,14 +89,6 @@ public class User implements Serializable {
         this.email = email;
     }
 
-    public boolean isAdmin() {
-        return admin;
-    }
-
-    public void setAdmin(boolean admin) {
-        this.admin = admin;
-    }
-
     public UserCredentials getUserCredentials() {
         return userCredentials;
     }
@@ -126,7 +115,7 @@ public class User implements Serializable {
 
     public String toString() {
         return " firstname:" + firstName + " lastName:" + lastName + " email:" +
-                email + " admin:" + admin + " channel:" + channel + "username:" + userCredentials.getUsername() + "password:" + userCredentials.getPassword();
+                email +  " channel:" + channel + "username:" + userCredentials.getUsername() + "password:" + userCredentials.getPassword();
     }
 
 

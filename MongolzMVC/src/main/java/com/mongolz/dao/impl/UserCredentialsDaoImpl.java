@@ -1,13 +1,11 @@
 package com.mongolz.dao.impl;
 
-import javax.persistence.Query;
-
-import org.springframework.stereotype.Repository;
 
 import com.mongolz.dao.UserCredentialsDao;
 import com.mongolz.domain.UserCredentials;
+import org.springframework.stereotype.Repository;
 
-
+import javax.persistence.Query;
 
 
 @SuppressWarnings("unchecked")
@@ -15,7 +13,7 @@ import com.mongolz.domain.UserCredentials;
 public class UserCredentialsDaoImpl extends GenericDaoImpl<UserCredentials> implements UserCredentialsDao {
 
     public UserCredentialsDaoImpl() {
-        super.setDaoType(UserCredentials.class );
+        super.setDaoType(UserCredentials.class);
     }
 
     public UserCredentials findByUserName(String userName) {

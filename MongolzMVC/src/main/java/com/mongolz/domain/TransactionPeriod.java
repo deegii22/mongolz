@@ -7,13 +7,10 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
 
-@Entity
 public class TransactionPeriod implements Serializable {
 
-    @NotEmpty
     private String fromDate;
 
-    @NotEmpty
     private String toDate;
 
     public String getFromDate() {

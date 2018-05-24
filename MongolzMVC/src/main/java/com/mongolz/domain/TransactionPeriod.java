@@ -7,7 +7,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
 
-public class TransactionPeriod{
+public class TransactionPeriod implements Serializable {
 
     private String fromDate;
 

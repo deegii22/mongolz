@@ -16,7 +16,7 @@ public class AccountServiceImpl implements AccountService {
     @Autowired
     private AccountRestService accountRestService;
 
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+
     public List<Account> findAll() {
         return accountRestService.findAll();
     }

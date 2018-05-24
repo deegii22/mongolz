@@ -21,9 +21,9 @@ insert into ACCOUNT (ACCOUNT_NO, AccountName, balance, user_user_id) values (986
 insert into ACCOUNT (ACCOUNT_NO, AccountName, balance, user_user_id) values (986402, 'Saving', 100000, 2);
 insert into ACCOUNT (ACCOUNT_NO, AccountName, balance, user_user_id)values (986403, 'Salary', 20000, 2);
 
-insert into ACCOUNT (ACCOUNT_NO, AccountName, balance, user_user_id) values (986501,'Checking', 50000, 2);
-insert into ACCOUNT (ACCOUNT_NO, AccountName, balance, user_user_id) values (986502, 'Saving', 100000, 2);
-insert into ACCOUNT (ACCOUNT_NO, AccountName, balance, user_user_id)values (986503, 'Salary', 20000, 2);
+insert into ACCOUNT (ACCOUNT_NO, AccountName, balance, user_user_id) values (986501,'Checking', 50000, 3);
+insert into ACCOUNT (ACCOUNT_NO, AccountName, balance, user_user_id) values (986502, 'Saving', 100000, 3);
+insert into ACCOUNT (ACCOUNT_NO, AccountName, balance, user_user_id)values (986503, 'Salary', 20000, 3);
 
 insert into TRANSACTION (amount, description, fromAccount, toAccount, created)
 values (2000, 'beer', 986369, 986401, STR_TO_DATE('26-04-2018', '%d-%m-%Y'));

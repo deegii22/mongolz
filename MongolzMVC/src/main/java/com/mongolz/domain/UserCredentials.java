@@ -11,19 +11,13 @@ import java.util.List;
 
 
 @Entity(name = "CREDENTIALS")
-@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "@jid")
 public class UserCredentials {
 
     @Id
-    @Column(nullable = false, unique = true, length = 127)
-    @NotEmpty
+    @Column(nullable = false, unique = true)
     String username;
-
-    @Size(min = 6, max = 32, message = "{Size.name.validation}")
     @Column(nullable = false)
     String password;
-
-
     String verifyPassword;
     Boolean enabled;
 
@@ -31,8 +25,7 @@ public class UserCredentials {
     private User user;
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinTable(name = "credential_authority", joinColumns = {@JoinColumn(name = "credential_id")},
-            inverseJoinColumns = {@JoinColumn(name = "authority_id", unique = true)})
+    @JoinColumn(name = "credentials_id")
     List<Authority> authority = new ArrayList<Authority>();
 
     public String getUsername() {

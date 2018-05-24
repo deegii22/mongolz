@@ -36,7 +36,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "ID")
+    @Column(name = "USER_ID")
     private Long id = null;
 
     @Size(min = 4, max = 19, message = "{Size.name}")
@@ -54,12 +54,9 @@ public class User implements Serializable {
     @Column(name = "EMAIL", nullable = false)
     private String email;
 
-    @Column(name = "IS_ADMIN", nullable = true)
-    private boolean admin = false;
-
-    @OneToOne(fetch = FetchType.EAGER)
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "userId")
-//	@JsonBackReference
+	@JsonBackReference
     private UserCredentials userCredentials;
 
     @Column(name = "CHANNEL", nullable = false)
@@ -101,14 +98,6 @@ public class User implements Serializable {
         this.email = email;
     }
 
-    public boolean isAdmin() {
-        return admin;
-    }
-
-    public void setAdmin(boolean admin) {
-        this.admin = admin;
-    }
-
     public UserCredentials getUserCredentials() {
         return userCredentials;
     }
@@ -140,7 +129,6 @@ public class User implements Serializable {
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
-                ", admin=" + admin +
                 ", userCredentials=" + userCredentials +
                 ", channel='" + channel + '\'' +
                 ", accounts=" + accounts +

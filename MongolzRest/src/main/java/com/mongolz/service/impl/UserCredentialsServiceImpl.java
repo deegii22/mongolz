@@ -23,21 +23,20 @@ public class UserCredentialsServiceImpl implements com.mongolz.service.UserCrede
     public void save( UserCredentials userCredentials) {
         userCredentialsDao.save(userCredentials);
     }
-
+    public void update( UserCredentials userCredentials) {
+        userCredentialsDao.update(userCredentials);
+    }
 
     public List<UserCredentials> findAll() {
         return (List<UserCredentials>)userCredentialsDao.findAll();
     }
-
-    public UserCredentials findByUserName(String userName) {
-        return userCredentialsDao.findByUserName(userName);
+    public UserCredentials findOne(Long id){
+        return userCredentialsDao.findOne(id);
     }
 
 
-    @Override
-    public UserCredentials update(UserCredentials userCredentials) {
-        return userCredentialsDao.update(userCredentials);
-
+    public UserCredentials findByUserName(String userName) {
+        return userCredentialsDao.findByUserName(userName);
     }
 
 }

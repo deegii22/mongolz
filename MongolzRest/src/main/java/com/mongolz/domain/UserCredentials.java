@@ -1,27 +1,21 @@
 package com.mongolz.domain;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-import org.hibernate.validator.constraints.NotEmpty;
 
-import javax.persistence.*;
-import javax.validation.constraints.Size;
+
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.*;
 
-@Entity(name = "Authentication")
-@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "@jid")
+
+@Entity(name = "CREDENTIALS")
 public class UserCredentials {
 
     @Id
-    @Column(name = "USER", nullable = false, unique = true, length = 127)
-    String userName;
-
+    @Column(nullable = false, unique = true)
+    String username;
     @Column(nullable = false)
     String password;
-
-    @Column(name = "PASSWORD", nullable = false, length = 32)
     String verifyPassword;
     Boolean enabled;
 
@@ -30,17 +24,16 @@ public class UserCredentials {
     private User user;
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinTable(name = "credential_authority", joinColumns = {@JoinColumn(name = "credential_id")},
-            inverseJoinColumns = {@JoinColumn(name = "authority_id", unique = true)})
+    @JoinColumn(name="credentials_id")
     List<Authority> authority = new ArrayList<Authority>();
 
 
     public String getUsername() {
-        return userName;
+        return username;
     }
 
     public void setUsername(String username) {
-        this.userName = username;
+        this.username = username;
     }
 
     public String getPassword() {

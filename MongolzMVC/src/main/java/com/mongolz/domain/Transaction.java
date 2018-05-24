@@ -33,7 +33,7 @@ public class Transaction implements Serializable {
     private Date transactionDate = new Date();
 
     @Transient
-    private String error;
+    private String error = "";
 
     @ManyToOne(fetch=FetchType.EAGER,  cascade = CascadeType.MERGE)
     @JoinColumn(name="fromAccount")

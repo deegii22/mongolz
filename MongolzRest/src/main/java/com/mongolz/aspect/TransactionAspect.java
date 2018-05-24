@@ -36,14 +36,14 @@ public class TransactionAspect {
                 " " + transaction.getAmount() + " USD success. " + "    **********");
 
         // Mail send to email service
-        ApplicationContext context = new GenericXmlApplicationContext("classpath:spring/alert-app-context.xml");
-
-        RabbitTemplate transactionTemplate = context.getBean("alertTemplate", RabbitTemplate.class);
-        AlertService alertService = new AlertServiceImpl();
-        User user = userService.findOne(3L);
-        transaction.getFromAccount().setUser(user);
-        System.out.println("Rabbit user ..." + transaction.getFromAccount().getUser().getChannel());
-        alertService.publish(transactionTemplate, transaction);
+//        ApplicationContext context = new GenericXmlApplicationContext("classpath:spring/alert-app-context.xml");
+//
+//        RabbitTemplate transactionTemplate = context.getBean("alertTemplate", RabbitTemplate.class);
+//        AlertService alertService = new AlertServiceImpl();
+//        User user = userService.findOne(3L);
+//        transaction.getFromAccount().setUser(user);
+//        System.out.println("Rabbit user ..." + transaction.getFromAccount().getUser().getChannel());
+//        alertService.publish(transactionTemplate, transaction);
 
         System.out.println("Sent mail ...");
     }

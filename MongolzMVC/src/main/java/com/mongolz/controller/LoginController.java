@@ -14,36 +14,32 @@ import com.mongolz.domain.UserCredentials;
 import org.springframework.web.bind.support.SessionStatus;
 
 @Controller
-@SessionAttributes("user")
+//@SessionAttributes("user")
 public class LoginController {
 
-    @Autowired
-    UserCredentialsService credentialsService;
+//    @Autowired
+//    UserCredentialsService credentialsService;
+//
+//    @Autowired
+//    UserService userService;
 
-    @Autowired
-    UserService userService;
 
-    @RequestMapping(value = {"/","login"}, method = RequestMethod.GET)
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String login() {
         return "login";
     }
 
-    @RequestMapping(value = "/postLogin", method = RequestMethod.POST)
-    public String PostLogin(UserCredentials credentials, Model model) {
+    @RequestMapping(value = "/loginfailed", method = RequestMethod.GET)
+    public String loginerror(Model model) {
 
-        UserCredentials validCredentials = credentialsService.findByUserName(credentials.getUsername());
-
-        if (validCredentials == null)
-            return "login";
-
-        model.addAttribute("user", validCredentials.getUsername());
-        return "redirect:/welcome";
+        model.addAttribute("error", "true");
+        return "login";
     }
 
-    @RequestMapping(value="/logout", method = RequestMethod.GET)
-    public String logout(Model model, SessionStatus status) {
-        System.out.println(status.toString());
-        status.setComplete();
-        return "redirect:/welcome";
+    @RequestMapping(value = "/logout", method = RequestMethod.GET)
+    public String logout(Model model) {
+        return "redirect:/login";
     }
+
+
 }

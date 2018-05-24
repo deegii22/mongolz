@@ -48,9 +48,9 @@ public class User implements Serializable {
     @Column(name = "IS_ADMIN", nullable = true)
     private boolean admin = false;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "userId")
-    @JsonBackReference
+//    @JsonBackReference
     private UserCredentials userCredentials;
 
     @Column(name = "CHANNEL", nullable = false)

@@ -24,7 +24,7 @@
     margin-top: 70px;
     padding: 20px 35px !important;
     font-family: "MAK Freeset", Arial, sans-serif;
-    /*background: #D9DADD;*/
+    background: #D9DADD;
     height: 280px;
     border-radius: 10px;
 }
@@ -39,7 +39,7 @@
     width: 280px;
     color: #fff;
     padding: 15px 15px 0;
-    font-size: 11px;
+    font-size: 12px;
     height: 95px;
     overflow: hidden;
 }

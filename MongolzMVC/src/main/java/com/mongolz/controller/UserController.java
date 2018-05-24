@@ -2,6 +2,8 @@ package com.mongolz.controller;
 
 import javax.validation.Valid;
 
+import com.mongolz.domain.Authority;
+import com.mongolz.service.AuthorityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.mongolz.domain.User;
 import com.mongolz.service.UserService;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("/users")

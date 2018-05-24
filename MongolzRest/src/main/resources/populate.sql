@@ -2,7 +2,7 @@ INSERT INTO Authentication(user,password,enabled) VALUES ('eta','eta', TRUE);
 INSERT INTO Authentication(user,password,enabled) VALUES ('admin','admin', TRUE);
 INSERT INTO Authentication(user,password,enabled) VALUES ('deegii','deegii', TRUE);
 
-INSERT INTO AUTHORITY (id,username, authority) VALUES (1,'eta', 'ROLE_TRAN');
+  INSERT INTO AUTHORITY (id,username, authority) VALUES (1,'eta', 'ROLE_TRAN');
 INSERT INTO AUTHORITY (id,username, authority) VALUES (2,'admin', 'ROLE_ADMIN');
 INSERT INTO AUTHORITY (id,username, authority) VALUES (3,'admin', 'ROLE_STAT');
 

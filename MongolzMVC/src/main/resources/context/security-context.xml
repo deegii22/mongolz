@@ -14,7 +14,7 @@
 	<security:http use-expressions="true">
 
 		<!-- Security restrictions  -->
-		<security:intercept-url pattern="/users/*"
+		<security:intercept-url pattern="/users*"
 			access="hasRole('ROLE_ADMIN')" />
 
 		<security:form-login login-page="/login"

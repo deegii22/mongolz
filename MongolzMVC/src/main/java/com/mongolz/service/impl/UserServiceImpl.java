@@ -35,12 +35,12 @@ public class UserServiceImpl implements com.mongolz.service.UserService {
         userRestService.save(user);
     }
 
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER','ROLE_TRAN')")
     public List<User> findAll() {
         return (List<User>)userRestService.findAll();
     }
 
-
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER','ROLE_TRAN')")
     @Override
     public User findByUsername(String username) {
         return userRestService.findByUsername(username);

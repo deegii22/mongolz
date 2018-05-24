@@ -8,10 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.time.LocalDate;
@@ -59,6 +56,8 @@ public class TransactionController {
         LocalDate fromDate = toDate.plusMonths(-1);
         model.addAttribute("transactions", transactionService.findByAccountAndDate(accountId, fromDate, toDate.plusDays(1)));
         model.addAttribute("accountId",accountId);
+        model.addAttribute("fromDate", fromDate);
+        model.addAttribute("toDate", toDate);
         return "transactionList";
     }
 
@@ -66,7 +65,7 @@ public class TransactionController {
     public String list(@PathVariable("accountId") Long accountId, Model model, @ModelAttribute("transactionPeriod") @Valid TransactionPeriod transactionPeriod, BindingResult result) {
         LocalDate fromDate = transactionPeriod.getFromDate();
         LocalDate toDate = transactionPeriod.getToDate();
-        model.addAttribute("transactions", transactionService.findByAccountAndDate(accountId, fromDate, toDate));
+        model.addAttribute("transactions", transactionService.findByAccountAndDate(accountId, fromDate, toDate.plusDays(1)));
         return "transactionList";
     }
 }

@@ -30,18 +30,18 @@ public class TransactionAspect {
                 " " + transaction.getAmount() + " USD success. " + "    **********");
 
         // Mail send to email service
-        ApplicationContext context = new GenericXmlApplicationContext("classpath:spring/alert-app-context.xml");
-
-        RabbitTemplate transactionTemplate = context.getBean("alertTemplate", RabbitTemplate.class);
-        AlertService alertService = new AlertServiceImpl();
-        alertService.publish(transactionTemplate, transaction);
-
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+//        ApplicationContext context = new GenericXmlApplicationContext("classpath:spring/alert-app-context.xml");
+//
+//        RabbitTemplate transactionTemplate = context.getBean("alertTemplate", RabbitTemplate.class);
+//        AlertService alertService = new AlertServiceImpl();
+//        alertService.publish(transactionTemplate, transaction);
+//
+//        try {
+//            Thread.sleep(1000);
+//        } catch (InterruptedException e) {
+//            // TODO Auto-generated catch block
+//            e.printStackTrace();
+//        }
 
         System.out.println("Sent mail ...");
     }

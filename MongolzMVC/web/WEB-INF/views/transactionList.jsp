@@ -26,7 +26,7 @@
 							code="transaction.form.fromDate.label"/></label>
 					<div class="col-lg-4">
 						<div class="form:input-prepend">
-							<form:input id="fromDate" path="fromDate" type="date" class="form-control"/>
+							<form:input id="fromDate" path="fromDate" type="date" class="form-control" value="${fromDate}"/>
 							<form:errors path="fromDate" cssClass="text-danger"/>
 						</div>
 					</div>
@@ -36,7 +36,7 @@
 							code="transaction.form.toDate.label"/></label>
 					<div class="col-lg-4">
 						<div class="form:input-prepend">
-							<form:input id="toDate" path="toDate" type="date" class="form-control"/>
+							<form:input id="toDate" path="toDate" type="date" class="form-control" value="${toDate}"/>
 							<form:errors path="toDate" cssClass="text-danger"/>
 						</div>
 					</div>

@@ -1,5 +1,6 @@
 package com.mongolz.service;
 
+import com.mongolz.domain.User;
 import com.mongolz.domain.UserCredentials;
 
 import java.util.List;
@@ -12,4 +13,7 @@ public interface UserCredentialsService {
     public List<UserCredentials> findAll();
     public UserCredentials findOne(Long id);
     public UserCredentials findByUserName(String userName);
+    public boolean LoggedIn();
+    public User getUser();
+
   }

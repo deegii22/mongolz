@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.mongolz.rest.service.UserRestService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -34,10 +35,11 @@ public class UserServiceImpl implements com.mongolz.service.UserService {
         userRestService.save(user);
     }
 
-
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public List<User> findAll() {
         return (List<User>)userRestService.findAll();
     }
+
 
     @Override
     public User findByUsername(String username) {

@@ -5,6 +5,7 @@ import com.mongolz.rest.service.TransactionRestService;
 import com.mongolz.service.TransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -16,6 +17,7 @@ public class TransactionServiceImpl implements TransactionService {
     @Autowired
     private TransactionRestService transactionRestService;
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public Transaction doTransaction(Transaction transaction){
         return transactionRestService.doTransaction(transaction);
     }

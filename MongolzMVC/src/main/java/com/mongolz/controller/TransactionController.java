@@ -4,6 +4,7 @@ import com.mongolz.domain.Transaction;
 import com.mongolz.domain.TransactionPeriod;
 import com.mongolz.service.AccountService;
 import com.mongolz.service.TransactionService;
+import com.mongolz.service.UserCredentialsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -29,6 +30,9 @@ public class TransactionController {
     @Autowired
     private AccountService accountService;
 
+    @Autowired
+    UserCredentialsService credentialsService;
+
 //    @InitBinder
 //    public void initBinder(WebDataBinder binder) {
 //        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
@@ -38,8 +42,14 @@ public class TransactionController {
 
     @RequestMapping(value = "/add", method = RequestMethod.GET)
     public String getAddNewTranForm(@ModelAttribute("newTransaction") Transaction newTransaction, Model model) {
-        model.addAttribute("accounts", accountService.findByUser(1L));
-        return "transaction";
+
+        if (credentialsService.LoggedIn()) {
+            model.addAttribute("accounts", accountService.findByUser(1L));
+            return "transaction";
+        } else {
+            return "redirect:/login";
+        }
+
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
@@ -68,7 +78,7 @@ public class TransactionController {
         LocalDate toDate = LocalDate.now();
         LocalDate fromDate = toDate.plusMonths(-1);
         model.addAttribute("transactions", transactionService.findByAccountAndDate(accountId, fromDate, toDate.plusDays(1)));
-        model.addAttribute("accountId",accountId);
+        model.addAttribute("accountId", accountId);
         model.addAttribute("fromDate", fromDate);
         model.addAttribute("toDate", toDate);
         return "transactionList";

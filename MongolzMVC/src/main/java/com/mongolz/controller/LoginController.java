@@ -17,8 +17,8 @@ import org.springframework.web.bind.support.SessionStatus;
 //@SessionAttributes("user")
 public class LoginController {
 
-//    @Autowired
-//    UserCredentialsService credentialsService;
+    @Autowired
+    UserCredentialsService credentialsService;
 //
 //    @Autowired
 //    UserService userService;

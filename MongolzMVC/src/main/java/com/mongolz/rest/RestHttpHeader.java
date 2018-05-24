@@ -36,8 +36,8 @@ public class RestHttpHeader {
      */
     public HttpHeaders getHttpHeaders() {
 
-        String username = "admin";
-        String password = "admin";
+        String username = "guest";
+        String password = "guest";
 
         String auth = username + ":" + password;
         byte[] encodedAuth = Base64.encodeBase64(

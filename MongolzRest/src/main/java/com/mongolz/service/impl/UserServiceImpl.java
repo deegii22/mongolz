@@ -2,8 +2,8 @@ package com.mongolz.service.impl;
 
 import java.util.List;
 
+import com.mongolz.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -13,7 +13,7 @@ import com.mongolz.service.UserCredentialsService;
 
 @Service
 @Transactional
-public class UserServiceImpl implements com.mongolz.service.UserService {
+public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserDao userDao;

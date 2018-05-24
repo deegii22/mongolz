@@ -12,7 +12,7 @@
 
         <div class="navbar-collapse collapse" id="glmt-menu">
             <div class="top-right-menu navbar-right hidden-xs">
-                <a href="/logout" title="Logout" class="btn">Logout</a>
+                <a href="/dologout" title="Logout" class="btn">Logout</a>
             </div>
 
         </div>
@@ -20,26 +20,16 @@
     <div role="navigation">
         <div class="main-menu hidden-xs">
             <div class="wlcm-cont">
-                Welcome  ${user} <!doctype html>
-                <html lang="en">
-                <head>
-                    <meta charset="UTF-8">
-                    <meta name="viewport"
-                          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-                    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-                    <title>Document</title>
-                </head>
-                <body>
-                
-                </body>
-                </html>
+                <security:authorize access="isAuthenticated()">
+                Welcome  <security:authentication property="principal.username" />
+                </security:authorize>
+
             </div>
             <ul class="menu" id="topbar">
-                <c:choose>
-                    <c:when test="${empty user}">
+                <security:authorize access="isAnonymous()">
                         <a href="<spring:url value='/login' />" class="btn btn-default pull-right"> Login</a>
-                    </c:when>
-                    <c:otherwise>
+                </security:authorize>
+                <security:authorize access="isAuthenticated()">
                         <li><a href="/welcome">
                             <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
                                  xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 35.933 35.933"
@@ -81,8 +71,8 @@
                             <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1000px" height="1000px" viewBox="0 0 1000 1000" enable-background="new 0 0 1000 1000" xml:space="preserve"><path d="M921,219H80.1c-27.6,0-50,22.4-50,50v462c0,27.6,22.4,50,50,50H921c27.6,0,50-22.4,50-50V269C971,241.4,948.6,219,921,219zM381.5,582.7c0,15.7-8.1,29.6-20.3,37.6v-35.2c0-27.1-21.9-49-49-49h-19.5l-34.2,55l-11.9-21.1l21-33.9h-25.9h-25.9l21,33.9l-11.9,21.1l-34.2-55h-19.5c-27.1,0-49,21.9-49,49v32.2c-9.9-8.3-16.2-20.7-16.2-34.6v-249c0-24.9,20.1-45,45-45h185.4c24.9,0,45,20.1,45,45V582.7z M899,667.6c0,13.8-11.2,25-25,25H474c-13.8,0-25-11.2-25-25V665c0-13.8,11.2-25,25-25h400c13.8,0,25,11.2,25,25V667.6z M899,501.3c0,13.8-11.2,25-25,25H474c-13.8,0-25-11.2-25-25v-2.6c0-13.8,11.2-25,25-25h400c13.8,0,25,11.2,25,25V501.3z M899,335c0,13.8-11.2,25-25,25H474c-13.8,0-25-11.2-25-25v-2.6c0-13.8,11.2-25,25-25h400c13.8,0,25,11.2,25,25V335z"></path><path d="M302.6,372.7h-59.9c-38.9,0-71.8,31.8-72,70.7c-0.1,39.4,31.8,71.3,71.2,71.2c38.9-0.1,70.7-33.1,70.7-72v-59.9C312.6,377.2,308.2,372.7,302.6,372.7z"></path></svg>
                             <div>My Profile</div>
                         </a></li>
-                    </c:otherwise>
-                </c:choose>
+                </security:authorize>
+
             </ul>
 
         </div>

@@ -20,11 +20,12 @@ public class UserController {
     }
 
     @RequestMapping("/{username}")
-    public User getByEmail(@PathVariable("username") String username) {
+    public User findByUsername(@PathVariable("username") String username) {
 
         System.out.println("Orj irsen email:"+username);
         return userService.findByUsername(username);
     }
+
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public User addNewUserForm(@RequestBody User userToBeAdded) {

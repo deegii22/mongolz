@@ -32,12 +32,12 @@ public class UserServiceImpl implements com.mongolz.service.UserService {
         userDao.save(user);
     }
 
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    //@PreAuthorize("hasRole('ROLE_TRAN')")
     public List<User> findAll() {
         return (List<User>) userDao.findAll();
     }
 
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    //@PreAuthorize("hasRole('ROLE_ADMIN')")
     public User findByUsername(String username) {
         return userDao.findByUsername(username);
     }

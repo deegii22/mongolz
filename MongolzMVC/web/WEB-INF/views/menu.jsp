@@ -69,7 +69,7 @@
                         </g></svg>
                         <div>Transactions</div>
                     </a></li>
-                    <li><a href="/users/${user}">
+                    <li><a href="/users/<security:authentication property="principal.username"/>">
                         <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
                              xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1000px" height="1000px"
                              viewBox="0 0 1000 1000" enable-background="new 0 0 1000 1000" xml:space="preserve"><path

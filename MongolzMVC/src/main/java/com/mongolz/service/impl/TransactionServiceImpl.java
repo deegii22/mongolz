@@ -17,7 +17,7 @@ public class TransactionServiceImpl implements TransactionService {
     @Autowired
     private TransactionRestService transactionRestService;
 
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER')")
     public Transaction doTransaction(Transaction transaction){
         return transactionRestService.doTransaction(transaction);
     }

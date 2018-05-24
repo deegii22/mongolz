@@ -5,13 +5,19 @@ import com.mongolz.domain.TransactionPeriod;
 import com.mongolz.service.AccountService;
 import com.mongolz.service.TransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 
 @Controller
 @RequestMapping("/transactions")
@@ -22,6 +28,13 @@ public class TransactionController {
 
     @Autowired
     private AccountService accountService;
+
+//    @InitBinder
+//    public void initBinder(WebDataBinder binder) {
+//        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+//        dateFormat.setLenient(false);
+//        binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));
+//    }
 
     @RequestMapping(value = "/add", method = RequestMethod.GET)
     public String getAddNewTranForm(@ModelAttribute("newTransaction") Transaction newTransaction, Model model) {
@@ -62,9 +75,10 @@ public class TransactionController {
     }
 
     @RequestMapping(value = {"/{accountId}"}, method = RequestMethod.POST)
-    public String list(@PathVariable("accountId") Long accountId, Model model, @ModelAttribute("transactionPeriod") @Valid TransactionPeriod transactionPeriod, BindingResult result) {
-        LocalDate fromDate = transactionPeriod.getFromDate();
-        LocalDate toDate = transactionPeriod.getToDate();
+    public String list(@PathVariable("accountId") Long accountId, Model model, @Valid @ModelAttribute("transactionPeriod") TransactionPeriod transactionPeriod, BindingResult result) {
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDate fromDate = LocalDate.parse(transactionPeriod.getFromDate(), dtf);
+        LocalDate toDate = LocalDate.parse(transactionPeriod.getToDate(), dtf);
         model.addAttribute("transactions", transactionService.findByAccountAndDate(accountId, fromDate, toDate.plusDays(1)));
         return "transactionList";
     }

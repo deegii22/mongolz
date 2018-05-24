@@ -15,28 +15,28 @@
 		<div class="row">
 			<form:form modelAttribute="transactionPeriod" class="form-horizontal">
 				<div class="form-group">
-					<label class="control-label col-lg-2" for="fromDate"><spring:message
+					<label class="control-label col-lg-2"><spring:message
 							code="transaction.form.accountNumber.label"/></label>
 					<div class="col-lg-4">
 						${accountId}
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label col-lg-2" for="fromDate"><spring:message
+					<label class="control-label col-lg-2"><spring:message
 							code="transaction.form.fromDate.label"/></label>
 					<div class="col-lg-4">
 						<div class="form:input-prepend">
-							<form:input id="fromDate" path="fromDate" type="date" class="form-control" value="${fromDate}"/>
+							<form:input id="fromDate" path="fromDate" name ="fromDate" class="form-control" value="${fromDate}"/>
 							<form:errors path="fromDate" cssClass="text-danger"/>
 						</div>
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label col-lg-2" for="toDate"><spring:message
+					<label class="control-label col-lg-2"><spring:message
 							code="transaction.form.toDate.label"/></label>
 					<div class="col-lg-4">
 						<div class="form:input-prepend">
-							<form:input id="toDate" path="toDate" type="date" class="form-control" value="${toDate}"/>
+							<form:input id="toDate" path="toDate" name ="toDate" class="form-control" value="${toDate}"/>
 							<form:errors path="toDate" cssClass="text-danger"/>
 						</div>
 					</div>

@@ -3,21 +3,24 @@ package com.mongolz.domain;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Date;
 
 public class Transaction implements Serializable {
     private long id;
 
-    private double amount;
+    private BigDecimal amount;
 
     private String description;
 
     @DateTimeFormat(pattern = "MM.dd.yyyy")
     private Date transactionDate = new Date();
 
-    private Account  fromAccount;
+    private String error;
 
-    private Account  toAccount;
+    private Account fromAccount;
+
+    private Account toAccount;
 
     // ********************** Accessor Methods ********************** //
     public long getId() {
@@ -28,11 +31,11 @@ public class Transaction implements Serializable {
         this.id = id;
     }
 
-    public double getAmount() {
+    public BigDecimal getAmount() {
         return amount;
     }
 
-    public void setAmount(double amount) {
+    public void setAmount(BigDecimal amount) {
         this.amount = amount;
     }
 
@@ -66,6 +69,14 @@ public class Transaction implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getError() {
+        return error;
+    }
+
+    public void setError(String error) {
+        this.error = error;
     }
 
     // ********************** Business Methods ********************** //

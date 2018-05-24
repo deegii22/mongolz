@@ -30,9 +30,8 @@ public class EmailMessageListener implements MessageListener {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-        System.out.println("EMAIL Item - Message received: " );
-        System.out.println("         Item Name: "  +    routeTransaction.getChannel());
-        System.out.println("         Item Name: "  +    routeTransaction.getTransaction().getAmount());
+        System.out.println("EMAIL Alert - Message received: " );
+        System.out.println("         Transaction Channel: "  +    routeTransaction.getChannel());
 
         ApplicationContext context = new ClassPathXmlApplicationContext("context/applicationContext.xml");
 

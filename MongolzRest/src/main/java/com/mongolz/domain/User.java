@@ -47,7 +47,7 @@ public class User implements Serializable {
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "userId")
-    @JsonBackReference
+//    @JsonBackReference
     private UserCredentials userCredentials;
 
     @Column(name = "CHANNEL", nullable = false)

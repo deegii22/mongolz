@@ -2,6 +2,7 @@ package com.mongolz.controller;
 
 import com.mongolz.domain.Transaction;
 import com.mongolz.domain.TransactionPeriod;
+import com.mongolz.domain.User;
 import com.mongolz.service.AccountService;
 import com.mongolz.service.TransactionService;
 import com.mongolz.service.UserCredentialsService;
@@ -43,8 +44,9 @@ public class TransactionController {
     @RequestMapping(value = "/add", method = RequestMethod.GET)
     public String getAddNewTranForm(@ModelAttribute("newTransaction") Transaction newTransaction, Model model) {
 
+        User user = credentialsService.getUser();
         if (credentialsService.LoggedIn()) {
-            model.addAttribute("accounts", accountService.findByUser(1L));
+            model.addAttribute("accounts", accountService.findByUser(user.getId()));
             return "transaction";
         } else {
             return "redirect:/login";
@@ -55,8 +57,9 @@ public class TransactionController {
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public String processAddNewTranForm(Model model, @ModelAttribute("newTransaction") @Valid Transaction transactionToBeAdded, BindingResult result) {
 
+        User user = credentialsService.getUser();
         if (result.hasErrors()) {
-            model.addAttribute("accounts", accountService.findByUser(1L));
+            model.addAttribute("accounts", accountService.findByUser(user.getId()));
             return "transaction";
         }
 
@@ -67,7 +70,7 @@ public class TransactionController {
             return "redirect:/accounts";
         else {
             model.addAttribute("error", transactionToBeAdded.getError());
-            model.addAttribute("accounts", accountService.findByUser(1L));
+            model.addAttribute("accounts", accountService.findByUser(user.getId()));
             return "transaction";
         }
 

@@ -22,9 +22,8 @@ public class SmsMessageListener implements MessageListener {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-        System.out.println("SMS Item - Message received: " );
-        System.out.println("         Item Name: "  +    routeTransaction.getChannel());
-        System.out.println("         Item Name: "  +    routeTransaction.getTransaction().getAmount());
+        System.out.println("SMS Alert - Message received: " );
+        System.out.println("         Transaction Channel: "  +    routeTransaction.getChannel());
 
     }
 }

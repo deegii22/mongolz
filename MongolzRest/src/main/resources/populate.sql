@@ -1,6 +1,7 @@
 INSERT INTO Authentication(user,password,enabled) VALUES ('eta','eta', TRUE);
 INSERT INTO Authentication(user,password,enabled) VALUES ('admin','admin', TRUE);
- 
+INSERT INTO Authentication(user,password,enabled) VALUES ('deegii','deegii', TRUE);
+
 INSERT INTO AUTHORITY (id,username, authority) VALUES (1,'eta', 'ROLE_TRAN');
 INSERT INTO AUTHORITY (id,username, authority) VALUES (2,'admin', 'ROLE_ADMIN');
 INSERT INTO AUTHORITY (id,username, authority) VALUES (3,'admin', 'ROLE_STAT');
@@ -11,6 +12,7 @@ INSERT INTO credential_authority (credential_id,authority_id) VALUES ('admin',3)
 
 INSERT INTO `USERS` (user_id,firstname, lastname,email,channel, is_admin, userId) VALUES (1,'Admin','Admin','admin@mongolz.com','EMAIL',1,'admin');
 INSERT INTO `USERS` (user_id,firstname, lastname,email,channel, is_admin,userId) VALUES (2,'Enkhtulga','Tseveenkhuu','ts.enkh@wrench.com','EMAIL',1,'eta');
+INSERT INTO `USERS` (user_id,firstname, lastname,email,channel, is_admin,userId) VALUES (3,'Munkhdelger','Buyandalai','deegii212@gmail.com','EMAIL',1,'deegii');
 
 insert into ACCOUNT (ACCOUNT_NO, AccountName, balance, user_user_id) values (986369, 'Checking', 50000, 1);
 insert into ACCOUNT (ACCOUNT_NO, AccountName, balance, user_user_id) values (986367, 'Saving', 100000, 1);

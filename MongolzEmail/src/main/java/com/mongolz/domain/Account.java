@@ -1,15 +1,16 @@
 package com.mongolz.domain;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 public class Account implements Serializable {
     private long id;
 
     private String accountName;
 
-    private double balance;
+    private BigDecimal balance;
 
-    private User  user;
+    private User user;
 
     // ********************** Accessor Methods ********************** //
     public long getId() {
@@ -28,11 +29,11 @@ public class Account implements Serializable {
         this.accountName = accountName;
     }
 
-    public double getBalance() {
+    public BigDecimal getBalance() {
         return balance;
     }
 
-    public void setBalance(double balance) {
+    public void setBalance(BigDecimal balance) {
         this.balance = balance;
     }
 

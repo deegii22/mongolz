@@ -16,11 +16,11 @@ public class AccountServiceImpl implements AccountService {
     @Autowired
     private AccountRestService accountRestService;
 
-
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER','ROLE_TRAN')")
     public List<Account> findAll() {
         return accountRestService.findAll();
     }
-
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER','ROLE_TRAN')")
     public List<Account> findByUser(Long userId) {
         return accountRestService.findByUser(userId);
     }

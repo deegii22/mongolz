@@ -6,7 +6,7 @@ INSERT INTO credentials(username,password,enabled) VALUES ('deegii','$2a$10$S/wl
 INSERT INTO authority (username, authority) VALUES ('guest', 'ROLE_USER');
 INSERT INTO authority (username, authority) VALUES ('admin', 'ROLE_ADMIN');
 INSERT INTO authority (username, authority) VALUES ('admin', 'ROLE_USER');
-INSERT INTO authority (username, authority) VALUES ('deegii', 'ROLE_USER');
+INSERT INTO authority (username, authority) VALUES ('deegii', 'ROLE_TRAN');
 
 INSERT INTO `USERS` (user_id,firstname, lastname,email,channel,userId) VALUES (1,'Admin','Admin','admin@mongolz.com','MSG','admin');
 INSERT INTO `USERS` (user_id,firstname, lastname,email,channel,userId) VALUES (2,'Enkhtulga','Tseveenkhuu','guest@mongolz.com','MSG','guest');
@@ -20,6 +20,10 @@ insert into ACCOUNT (ACCOUNT_NO, AccountName, balance, user_user_id)values (9863
 insert into ACCOUNT (ACCOUNT_NO, AccountName, balance, user_user_id) values (986401,'Checking', 50000, 2);
 insert into ACCOUNT (ACCOUNT_NO, AccountName, balance, user_user_id) values (986402, 'Saving', 100000, 2);
 insert into ACCOUNT (ACCOUNT_NO, AccountName, balance, user_user_id)values (986403, 'Salary', 20000, 2);
+
+insert into ACCOUNT (ACCOUNT_NO, AccountName, balance, user_user_id) values (986501,'Checking', 50000, 2);
+insert into ACCOUNT (ACCOUNT_NO, AccountName, balance, user_user_id) values (986502, 'Saving', 100000, 2);
+insert into ACCOUNT (ACCOUNT_NO, AccountName, balance, user_user_id)values (986503, 'Salary', 20000, 2);
 
 insert into TRANSACTION (amount, description, fromAccount, toAccount, created)
 values (2000, 'beer', 986369, 986401, STR_TO_DATE('26-04-2018', '%d-%m-%Y'));

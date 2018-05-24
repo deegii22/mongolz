@@ -25,12 +25,12 @@
 		<property name="sessionCacheSize" value="10"/>
 	</bean>
 
-	<bean id="highPriceQueue" class="org.apache.activemq.command.ActiveMQQueue">
-		<constructor-arg value="queue.highPrice"/>
+	<bean id="smsQueue" class="org.apache.activemq.command.ActiveMQQueue">
+		<constructor-arg value="queue.sms"/>
 	</bean>
 
-	<bean id="moderatePriceQueue" class="org.apache.activemq.command.ActiveMQQueue">
-		<constructor-arg value="queue.moderatePrice"/>
+	<bean id="emailQueue" class="org.apache.activemq.command.ActiveMQQueue">
+		<constructor-arg value="queue.email"/>
 	</bean>
 
 	<bean id="warehouseQueue" class="org.apache.activemq.command.ActiveMQQueue">

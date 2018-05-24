@@ -24,7 +24,7 @@
 					<tr>
 						<td>${account.id}</td>
 						<td>${account.accountName}</td>
-						<td>${account.balance}</td>
+						<td align="right">${account.balance}</td>
 						<td>
 							<a href="/transactions/${account.id}" class="btn">View transactions</a>
 						</td>

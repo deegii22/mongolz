@@ -5,6 +5,9 @@ import com.mongolz.domain.Transaction;
 import com.mongolz.service.AccountService;
 import com.mongolz.service.TransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -38,25 +41,32 @@ public class TransactionController {
     @RequestMapping(value = "/txn", method = RequestMethod.POST)
     public Transaction processAddNewItemForm(@RequestBody Transaction itemToBeAdded) {
 
+        HttpHeaders responseHeader = new HttpHeaders();
         try {
             Account toAccount = accountService.findOne(itemToBeAdded.getToAccount().getId());
-//            if(toAccount == null)
-//                return "to not found";
+            if(toAccount == null) {
+                itemToBeAdded.setError("To account not found.");
+                return itemToBeAdded;
+            }
             Account fromAccount = accountService.findOne(itemToBeAdded.getFromAccount().getId());
-//            if(fromAccount.getBalance() < itemToBeAdded.getAmount())
-//                return "balance";
-            toAccount.setBalance(toAccount.getBalance() + itemToBeAdded.getAmount());
-            fromAccount.setBalance(fromAccount.getBalance() - itemToBeAdded.getAmount());
+            if(fromAccount.getBalance().compareTo(itemToBeAdded.getAmount()) < 0)
+            {
+                itemToBeAdded.setError("Account balance is insufficient");
+                return itemToBeAdded;
+            }
+            toAccount.setBalance(toAccount.getBalance().add(itemToBeAdded.getAmount()));
+            fromAccount.setBalance(fromAccount.getBalance().subtract(itemToBeAdded.getAmount()));
+            //itemToBeAdded.setFromAccount(fromAccount);
+            //itemToBeAdded.setToAccount(toAccount);
             accountService.update(toAccount);
             accountService.update(fromAccount);
             transactionService.doTransaction(itemToBeAdded);
+            itemToBeAdded.setError("");
         } catch (Exception up) {
             System.out.println(up.toString());
-            System.out.println("Transaction Failed!!!");
-
+            itemToBeAdded.setError("Transaction Failed!!!");
         }
-
-        return null;
+        return itemToBeAdded;
     }
 
 }

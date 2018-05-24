@@ -16,14 +16,14 @@
 
 package com.mongolz.main;
 
+import java.util.Scanner;
+
 import com.mongolz.integration.ItemGateway;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Component;
 
-import java.util.Scanner;
-
-
+ 
 @Component
 public class Main {
 
@@ -31,8 +31,9 @@ public class Main {
 		"/META-INF/spring/integration/common.xml",
             "/META-INF/spring/integration/itemGateway.xml",
 			"/META-INF/spring/integration/amqp-item-app-context.xml",
-		"/META-INF/spring/integration/jms-highPrice-app-context.xml",
-		"/META-INF/spring/integration/jms-moderatePrice-app-context.xml"
+			"/META-INF/spring/integration/jms-sms-app-context.xml",
+			"/META-INF/spring/integration/jms-email-app-context.xml",
+			"/context/applicationContext.xml"
 	};
 
 	ItemGateway itemGateway;
@@ -46,7 +47,7 @@ public class Main {
 
 		System.out.println("\n========================================================="
 				+ "\n                                                         "
-				+ "\n    Welcome to the WAA 545 RouteOrder System!                 "
+				+ "\n    Welcome to the WAA 545 RouteTransaction System!                 "
 				+ "\n                                                         "
 				+ "\n    For more information please visit:                   "
 				+ "\n    REFER to the Slides & your Class NOTES!              "

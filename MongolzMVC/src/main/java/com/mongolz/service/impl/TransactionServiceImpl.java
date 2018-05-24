@@ -16,8 +16,8 @@ public class TransactionServiceImpl implements TransactionService {
     @Autowired
     private TransactionRestService transactionRestService;
 
-    public void doTransaction(Transaction transaction){
-        transactionRestService.doTransaction(transaction);
+    public Transaction doTransaction(Transaction transaction){
+        return transactionRestService.doTransaction(transaction);
     }
     public List<Transaction> findByAccountAndDate(Long accountNo, LocalDate startTxnDate, LocalDate endTxnDate){
         return transactionRestService.findByAccountAndDate(accountNo, startTxnDate, endTxnDate);

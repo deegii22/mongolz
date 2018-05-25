@@ -24,8 +24,8 @@
 	<property name="port" value="587" />
 	<!-- Need to place your own username & password here -->
 	<!-- INTERNAL see EAI Notes -->
- 	<property name="username" value="deegii212@gmail.com" />
-	<property name="password" value="Akaiito@2255" />
+ 	<property name="username" value="username" />
+	<property name="password" value="password" />
     <property name="javaMailProperties">
 	 <props>
 	 		<prop key="mail.transport.protocol">smtp</prop>
